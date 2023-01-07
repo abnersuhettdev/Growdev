@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela 1</title>
+</head>
+<body>
+     <style>
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+        border-spacing: 0px;
+        height: 30px;
+      }
+      table {
+        margin: 30px auto;
+        width: 30%;
+      }
+      td {
+
+        padding: 2px 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Tabela 1 -->
+    <section>
+      <table>
+        <tr style="text-align: left">
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr style="text-align: center">
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+        <tr style="text-align: right">
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+        </tr>
+      </table>
+    </section>
+
+    <br />
+    <!-- Tabela 2 -->
+    <section>
+      <table>
+        <tr style="text-align: left">
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr style="text-align: center">
+          <td colspan="3">4</td>
+        </tr>
+        <tr style="text-align: left">
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+        </tr>
+      </table>
+    </section>
+    <br />
+
+    <!-- Tabela 3 -->
+    <section>
+      <table>
+        <tr style="text-align: left">
+          <td>1</td>
+          <td>2</td>
+          <td rowspan="3" style="text-align: center">3</td>
+        </tr>
+        <tr style="text-align: center">
+          <td colspan="2">4</td>
+        </tr>
+        <tr style="text-align: left">
+          <td>5</td>
+          <td>6</td>
+        </tr>
+      </table>
+    </section>
+    
+</body>
+</html>

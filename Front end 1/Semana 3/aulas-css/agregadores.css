@@ -1,0 +1,15 @@
+/* 
+    espaço: 
+*/
+
+div p {
+  /* color: red; */
+}
+
+div > p {
+  /* color: red; */
+}
+
+div     h2+ p {
+  color: green;
+}
