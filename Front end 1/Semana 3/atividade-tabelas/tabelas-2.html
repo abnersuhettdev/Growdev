@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabela 3</title>
+    <style>
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+        border-spacing: 1px;
+      }
+      table {
+        margin: 30px 50px;
+        width: 200px;
+        height: 200px;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Tabela 1 -->
+    <section>
+      <table>
+        <tr style="text-align: left">
+          <td colspan="3" style="height: 50px"></td>
+        </tr>
+        <tr>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+        <tr>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Tabela 2 -->
+    <section>
+      <table>
+        <tr style="text-align: left">
+          <td rowspan="3" style="height: 50px"></td>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+        <tr>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+        <tr>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Tabela 3 -->
+    <section>
+      <table style="width: 300px">
+        <tr>
+          <td colspan="5" style="height: 50px"></td>
+        </tr>
+        <tr>
+          <td rowspan="4" style="height: 50px"></td>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+        <tr>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+          <td rowspan="2" style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+        <tr>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+        <tr>
+          <td colspan="3" style="height: 50px"></td>
+          <td style="height: 50px"></td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
