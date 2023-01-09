@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atividade 1</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .absolute {
+      position: absolute;
+      top: 5px;
+      bottom: 5px;
+      left: 10px;
+      right: 10px;
+    }
+
+    .quadrado1 {
+      width: 700px;
+      height: 700px;
+      margin: auto;
+      background-color: blue;
+
+      z-index: -1;
+    }
+
+    .quadrado2 {
+      width: 550px;
+      height: 550px;
+      margin: auto;
+      background-color: red;
+    }
+
+    .quadrado3 {
+      width: 400px;
+      height: 400px;
+      margin: auto;
+      background-color: black;
+    }
+
+    .quadrado4 {
+      width: 200px;
+      height: 200px;
+      margin: auto;
+      background-color: green;
+    }
+
+    .quadrado5 {
+      width: 100px;
+      height: 100px;
+      margin: auto;
+      background-color: yellow;
+    }
+  </style>
+  <body>
+    <div class="quadrado1 absolute"></div>
+    <div class="quadrado2 absolute"></div>
+    <div class="quadrado3 absolute"></div>
+    <div class="quadrado4 absolute"></div>
+    <div class="quadrado5 absolute"></div>
+  </body>
+</html>
