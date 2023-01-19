@@ -122,7 +122,7 @@ let saldoConta = 1500;
 const taxaSaque = 4.5;
 let valorSaque = 100;
 
-console.log("Exercício 3");
+console.log("Exercício 3 : ");
 if (
   valorSaque > 0 &&
   (valorSaque % 5 == 0 || valorSaque % 5 == 0.5) &&
@@ -136,7 +136,6 @@ if (
 } else {
   console.log("Saldo Insuficiente");
 }
-
 console.log("------------------");
 
 /*
