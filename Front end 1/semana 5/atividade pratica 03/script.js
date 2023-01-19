@@ -205,7 +205,7 @@ if (age <= 12) {
 }
 
 console.log("Exercício 4:");
-console.log("Categoria: ",categoria);
+console.log("Categoria: ", categoria);
 console.log("--------------------");
 
 /*
@@ -237,7 +237,7 @@ let valorMulta;
 console.log("Exercício 5:");
 if (velocidadeCarro > limiteVelocidade) {
   valorMulta = (velocidadeCarro - limiteVelocidade) * 5;
-  console.log("O valor da multa é de ", valorMulta);
+  console.log("O valor da multa é de : ", valorMulta);
 } else {
   console.log("Você não foi Multado");
 }
