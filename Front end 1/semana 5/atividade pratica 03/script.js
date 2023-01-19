@@ -110,27 +110,29 @@ if (
 ) {
   valorSaque += taxaSaque;
   saldoConta = saldoConta - valorSaque;
-  console.log(saldoConta);
-} else {
-  console.log("Saldo Insuficiente");
+  console.log("O seu Saldo atual é de:" ,saldoConta);
+} else if (valorSaque %5 !== 0 ){
+  console.log("Valor do saque indisponível, tente um número múltiplo de 5");
 }
 
 
 */
 
 let saldoConta = 1500;
-let taxaSaque = 4.5;
-let valorSaque = 105.5;
+const taxaSaque = 4.5;
+let valorSaque = 100;
 
 console.log("Exercício 3");
 if (
   valorSaque > 0 &&
-  (valorSaque % 5 == 0 || valorSaque % 5 == 1 || valorSaque % 5 == 0.5) &&
+  (valorSaque % 5 == 0 || valorSaque % 5 == 0.5) &&
   valorSaque + taxaSaque <= saldoConta
 ) {
   valorSaque += taxaSaque;
   saldoConta = saldoConta - valorSaque;
-  console.log(saldoConta);
+  console.log("O seu saldo atual é de:", saldoConta);
+} else if (valorSaque % 5 !== 0) {
+  console.log("Valor do saque indisponível, tente um número múltiplo de 5");
 } else {
   console.log("Saldo Insuficiente");
 }
