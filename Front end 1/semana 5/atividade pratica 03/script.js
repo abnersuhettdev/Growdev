@@ -205,7 +205,7 @@ if (age <= 12) {
 }
 
 console.log("Exercício 4:");
-console.log(categoria);
+console.log("Categoria: ",categoria);
 console.log("--------------------");
 
 /*
