@@ -1,0 +1,1 @@
+alert('Codigo javascript rodando de forma externa')
