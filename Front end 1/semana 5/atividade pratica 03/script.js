@@ -52,7 +52,17 @@ console.log("-------------------------");
  num2
 
  --passos
- operacao
+ if (operacao == "+") {
+  operacao = num1 + num2;
+} else if (operacao == "-") {
+  operacao = num1 - num2;
+} else if (operacao == "*") {
+  operacao = num1 * num2;
+} else if (operacao == "/") {
+  operacao = num1 / num2;
+} else {
+  console.log("Operação inválida");
+}
 
 */
 
@@ -103,18 +113,17 @@ taxaSaque = 4.50
 
 if (
   valorSaque > 0 &&
-  (valorSaque % 5 == 0 ||
-    valorSaque % 5 == 1 ||
-    valorSaque % 5 == 0.5 ) &&
+  (valorSaque % 5 == 0 || valorSaque % 5 == 0.5) &&
   valorSaque + taxaSaque <= saldoConta
 ) {
   valorSaque += taxaSaque;
   saldoConta = saldoConta - valorSaque;
-  console.log("O seu Saldo atual é de:" ,saldoConta);
-} else if (valorSaque %5 !== 0 ){
+  console.log("O seu saldo atual é de:", saldoConta);
+} else if (valorSaque % 5 !== 0) {
   console.log("Valor do saque indisponível, tente um número múltiplo de 5");
+} else {
+  console.log("Saldo Insuficiente");
 }
-
 
 */
 
@@ -223,7 +232,7 @@ multado. Nesse caso, exiba o valor da multa, cobrando R$5 por cada km acima da v
     --passos
     if (velocidadeCarro > limiteVelocidade) {
   valorMulta = (velocidadeCarro - limiteVelocidade) * 5;
-  console.log("O valor da multa é de ", valorMulta);
+  console.log("O valor da multa é de : ", valorMulta);
 } else {
   console.log("Você não foi Multado");
 }
