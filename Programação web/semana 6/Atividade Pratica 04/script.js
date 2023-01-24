@@ -26,7 +26,7 @@ while (i < alturas.length) {
 }
 console.log("Exercicio 1:");
 console.log("Maior Altura: ", maiorAltura);
-console.log("Menor Altura: ", menorAltura);
+console.log("Menor Altura:  ", menorAltura);
 console.log("------------------------------");
 /* 
 2- Pedro tem 1,50m de altura e cresce 2 centímetros por ano, enquanto
