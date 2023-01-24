@@ -124,3 +124,74 @@ for (let contador = 0; contador <= valorDigitado; contador++) {
 console.log("Exercicio 5:");
 console.log(`Contagem: ${valor} Fim!`);
 console.log("------------------------------");
+
+/*
+6. Desenvolva um algoritmo que mostre uma contagem regressiva de
+30 até 1, marcando os números que forem primos, exatamente
+como mostrado abaixo:
+30 [29] 28 27 26 25 24 [23] 22 21 20 [19] 18 [17] 16...
+*/
+
+let contagem;
+
+console.log("Exercicio 6:");
+
+for (let index = 30; index >= 1; index--) {
+  for (let isPrimo = 30; isPrimo >= 1; isPrimo--) {
+    if (index % isPrimo === 0) {
+      contagem++;
+    }
+  }
+  if (contagem == 2) {
+    console.log(`[${index}]`);
+  } else {
+    console.log(index);
+    contagem = 0;
+  }
+}
+
+console.log("------------------------------");
+
+/* 
+Desenvolva um algoritmo que leia 10 números, calcule e escreva a
+média aritmética dos valores lidos, a quantidade de valores
+positivos, a quantidade de valores negativos e o percentual de
+valores negativos e positivos.
+*/
+
+let tenNumbers = [7.6, 8, -6.2, 9.2, 9, 7.8, 5.4, 6, -5, -8];
+let media,
+  soma = 0,
+  cont = 0,
+  numPositivo = 0,
+  numNegativo = 0,
+  percentPostv,
+  percentNegtv;
+
+console.log("Exercicio 7:");
+
+for (let e of tenNumbers) {
+  soma = soma + e;
+  cont++;
+
+  if (e > 0) {
+    numPositivo++;
+  } else {
+    numNegativo++;
+  }
+}
+
+media = (soma / cont).toFixed(2);
+
+percentPostv = ((numPositivo / cont) * 100).toFixed(2);
+
+percentNegtv = ((numNegativo / cont) * 100).toFixed(2);
+
+console.log(`Conjunto de Valores :${tenNumbers}`);
+console.log(`Média: ${media}`);
+
+console.log(`Quantidade de valores positivos ${numPositivo}`);
+console.log(`Quantidade de valores Negativos ${numNegativo}`);
+
+console.log(`Percentual de valores positivos ${percentPostv}`);
+console.log(`Percentual de valores negativos ${percentNegtv}`);
