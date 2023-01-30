@@ -3,6 +3,8 @@
 O programa vai parar quando for digitada a idade 999. No final,
 mostre quantos alunos existem na turma e qual é a média de idade
 do grupo.
+*/
+
 let contador = 0;
 let somaIdades = 0;
 let numAlunos = 0;
@@ -15,9 +17,9 @@ while (contador == 0) {
     contador = 1;
   }
 }
-console.log("O total de alunos é: ", numAlunos);
-console.log(`A média de idade da turma é ${somaIdades / numAlunos} `);
-*/
+document.write("<h2>Exercício 1:</h2>");
+document.write(`<p> O total de alunos é: ${numAlunos} </p>`);
+document.write(`A média de idade da turma é ${somaIdades / numAlunos} `);
 
 /*
 2. Desenvolva um aplicativo que leia o salário e o sexo de vários
@@ -25,6 +27,8 @@ funcionários. No final, mostre o total de salários pagos aos homens e
 o total pago às mulheres. O programa vai perguntar ao usuário se
 ele quer continuar ou não sempre que ler os dados de um
 funcionário.
+*/
+
 let funcionario;
 let totalSalarioFem = 0;
 let totalSalarioMasc = 0;
@@ -39,15 +43,20 @@ do {
     totalSalarioMasc += salario;
   }
   funcionario = 0 + 1;
+
   let prosseguir = prompt("Deseja prosseguir? S | N");
   if (prosseguir === "N" || prosseguir === "n") {
     continuar = false;
   }
 } while (continuar);
-console.log(`O total de funcionários é ${funcionario}`);
-console.log(`O total de Salário pago as Mulheres é ${totalSalarioFem}`);
-console.log(`O total de Salário pago aos Homens é ${totalSalarioMasc}`);
-*/
+document.write("<h2>Exercicio 2:</h2>");
+document.write(`<p>O total de funcionários é ${funcionario}</p>`);
+document.write(
+  `<p>O total de Salário pago as Mulheres é ${totalSalarioFem}</p>`
+);
+document.write(
+  `<p>O total de Salário pago aos Homens é ${totalSalarioMasc}</p>`
+);
 
 /*
 3.Crie um algoritmo que leia o valor inicial da contagem, o valor final e
@@ -57,7 +66,7 @@ Digite o primeiro Valor: 3
 Digite o último Valor: 10
 Digite o incremento: 2
 Contagem: 3 5 7 9 Acabou!
-
+*/
 
 let valorInicial = Number(prompt("Digite o primeiro Valor"));
 let valorFinal = Number(prompt("Digite o  último Valor "));
@@ -70,8 +79,8 @@ for (
 ) {
   str += contador + ",";
 }
-console.log(`Contagem: ${str} Acabou!`);
-*/
+document.write("<h2>Exercício 3:</h2>");
+document.write(`Contagem: ${str} Acabou!`);
 
 /*
 4. Numa promoção exclusiva para o Dia da Mulher, uma loja quer dar
@@ -80,44 +89,44 @@ programa que leia nome, sexo e o valor das compras do cliente e
 calcule o preço com desconto. Sabendo que:
 a. Homens ganham 5% de desconto
 b. Mulheres ganham 13% de desconto
+*/
 
 let nome = prompt("Digite o nome");
 let s = prompt("Digite o sexo F | M");
 let valorCompras = Number(prompt("Digite o Valor total das compras"));
 let precoDesconto;
 
+document.write("<h2> Exercicio 4: </h2>");
 if (s === "f" || s === "F") {
   precoDesconto = valorCompras * (13 / 100);
   let valorFinal = valorCompras - precoDesconto;
-  console.log("Valor com desconto ", valorFinal.toFixed(2));
+  document.write("Valor com desconto ", valorFinal.toFixed(2));
 } else {
   precoDesconto = valorCompras * (05 / 100);
   valorFinal = valorCompras - precoDesconto;
-  console.log("Valor com desconto ", valorFinal.toFixed(2));
+  document.write("Valor com desconto ", valorFinal.toFixed(2));
 }
-
-*/
 
 /*
 5. Faça um algoritmo que pergunte a distância que um passageiro
 deseja percorrer em Km. Calcule o preço da passagem, cobrando
 R$0.50 por Km para viagens até 200Km e R$0.45 para viagens mais
 longas.
+*/
 
 let passagem = 0;
-let contador = 0;
+let cont = 0;
 let numKM = Number(prompt("Quantos KM deseja percorrer?"));
-
-while (contador <= numKM) {
+while (cont <= numKM) {
   if (numKM <= 200) {
-    passagem = contador * 0.5;
+    passagem = cont * 0.5;
   } else {
-    passagem = contador * 0.45;
+    passagem = cont * 0.45;
   }
-  contador++;
+  cont++;
 }
-console.log("O preço da Passagem é: ", passagem);
-*/
+document.write("<h2>Exercício 5:</h2>");
+document.write("O preço da Passagem é: ", passagem);
 
 /*
 6. Faça um programa que leia a largura e o comprimento de um
@@ -128,18 +137,19 @@ Abaixo de 100m2 = TERRENO POPULAR
 Entre 100m2 e 500m2 = TERRENO MASTER
 Acima de 500m2 = TERRENO VIP
 
+*/
 let largura = Number(prompt("Digite a largura do terreno"));
 let comprimento = Number(prompt("Digite o comprimento do terreno"));
 let area = largura * comprimento;
 
+document.write("<h2>Exercicio 6: </h2>");
 if (area < 100) {
-  console.log(`A área do terreno é de ${area}m2`);
-  console.log(`CLASSIFICAÇÃO:TERRENO POPULAR`);
+  document.write(`A área do terreno é de ${area}m2</br>`);
+  document.write(`CLASSIFICAÇÃO:TERRENO POPULAR>`);
 } else if (area > 100 && area < 500) {
-  console.log(`A área do terreno é de ${area}m2`);
-  console.log(`CLASSIFICAÇÃO:TERRENO MASTER`);
+  document.write(`A área do terreno é de ${area}m2</br>`);
+  document.write(`CLASSIFICAÇÃO:TERRENO MASTER`);
 } else {
-  console.log(`A área do terreno é de ${area}m2`);
-  console.log(`CLASSIFICAÇÃO:TERRENO VIP`);
+  document.write(`A área do terreno é de ${area}m2</br>`);
+  document.write(`CLASSIFICAÇÃO:TERRENO VIP`);
 }
-*/
