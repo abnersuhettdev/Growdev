@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+
+    <style>
+      body {
+        height: 100vh;
+        background-color: #0c1821;
+        color: white;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+      }
+      #exercicios {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+        justify-content: center;
+      }
+      #exercicios button {
+        height: 40px;
+        width: 200px;
+        color: white;
+        background-color: #324a5f;
+        border-radius: 8px;
+        border: 1px solid white;
+        cursor: pointer;
+      }
+      #exercicios button:hover {
+        background-color: #759eb8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Atividade Prática - Arrays</h1>
+    <p>Respostas no console</p>
+    <div id="exercicios">
+      <button onclick="ex1()">Exercício 1</button>
+      <button onclick="ex2()">Exercício 2</button>
+      <button onclick="ex3()">Exercício 3</button>
+      <button onclick="ex4()">Exercício 4</button>
+      <button onclick="ex5()">Exercício 5</button>
+      <button onclick="ex6()">Exercício 6</button>
+    </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
