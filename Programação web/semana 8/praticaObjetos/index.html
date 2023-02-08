@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prática Objetos</title>
+  </head>
+  <body>
+    <script>
+      let pessoas = [];
+      let continuar = true;
+
+      do {
+        let nomeDigitado = prompt("Digite um nome");
+        let emailDigitado = prompt("Digite um email");
+        let enderecoDigitado = prompt("Digite o endereço");
+
+        let pessoa = {
+          nome: nomeDigitado,
+          email: emailDigitado,
+          endereco: enderecoDigitado,
+        };
+
+        pessoas.push(pessoa);
+
+        continuar = confirm("Deseja Continuar?");
+      } while (continuar);
+
+      for (let index = 0; index < pessoas.length; index++) {
+        const pessoa = pessoas[index];
+        console.log(
+          `Nome: ${pessoa.nome} | Email: ${pessoa.email} | Endereço: ${pessoa.endereco}`
+        );
+      }
+    </script>
+  </body>
+</html>
