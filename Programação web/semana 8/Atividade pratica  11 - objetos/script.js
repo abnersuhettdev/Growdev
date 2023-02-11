@@ -132,7 +132,7 @@ function ex4() {
   function filtraSkill(arr, skill) {
     for (let aluno of arr) {
       if (aluno.skills.includes(skill)) {
-        console.log(aluno);
+        console.log(`${aluno.nome}, ${aluno.idade}, [${aluno.skills}] `);
       }
     }
   }
@@ -167,17 +167,18 @@ function ex5() {
   const empregadosSalarioMenor2500 = [];
   const empregadosSalarioMaior2500 = [];
 
-  function cadastrarPessoa(pessoa) {
+  function cadastrarPessoa() {
     let continuar = true;
-    let salario;
+
     do {
       let nome = prompt("Digite o nome da pessoa");
       let idade = prompt("Digite a idade da pessoa");
       let trabalhando = confirm(
         "A pessoa está empregada? Se sim clique em OK se não clique em Cancelar"
       );
+      let salario;
 
-      pessoa = {
+      let pessoa = {
         nome: nome,
         idade: idade,
         trabalhando: trabalhando,
@@ -194,7 +195,7 @@ function ex5() {
           pessoa.salario = salario;
           empregadosSalarioMenor2500.push(pessoa);
         }
-      } else if (pessoa.trabalhando === false) {
+      } else {
         pessoa.salario = null;
         pessoasDesempregadas.push(pessoa);
       }
@@ -204,9 +205,17 @@ function ex5() {
   }
   cadastrarPessoa();
 
-  console.log(
-    pessoasDesempregadas,
-    empregadosSalarioMaior2500,
-    empregadosSalarioMenor2500
+  pessoasDesempregadas.forEach((pessoa) =>
+    console.log(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade}`)
+  );
+  empregadosSalarioMenor2500.forEach((pessoa) =>
+    console.log(
+      `Nome: ${pessoa.nome}, Idade: ${pessoa.idade}, Salário: R$${pessoa.salario} `
+    )
+  );
+  empregadosSalarioMaior2500.forEach((pessoa) =>
+    console.log(
+      `Nome: ${pessoa.nome}, Idade: ${pessoa.idade}, Salário: R$${pessoa.salario} `
+    )
   );
 }
