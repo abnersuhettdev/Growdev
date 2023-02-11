@@ -162,3 +162,51 @@ Nome: Alessandro, Idade: 28, Salário: 2700
 Nome: Alessandro, Idade: 28, Salário: 3000
 */
 
+function ex5() {
+  const pessoasDesempregadas = [];
+  const empregadosSalarioMenor2500 = [];
+  const empregadosSalarioMaior2500 = [];
+
+  function cadastrarPessoa(pessoa) {
+    let continuar = true;
+    let salario;
+    do {
+      let nome = prompt("Digite o nome da pessoa");
+      let idade = prompt("Digite a idade da pessoa");
+      let trabalhando = confirm(
+        "A pessoa está empregada? Se sim clique em OK se não clique em Cancelar"
+      );
+
+      pessoa = {
+        nome: nome,
+        idade: idade,
+        trabalhando: trabalhando,
+        salario: salario,
+      };
+
+      if (pessoa.trabalhando === true) {
+        salario = Number(prompt("Qual o salário dessa pessoa?"));
+
+        if (salario > 2500) {
+          pessoa.salario = salario;
+          empregadosSalarioMaior2500.push(pessoa);
+        } else {
+          pessoa.salario = salario;
+          empregadosSalarioMenor2500.push(pessoa);
+        }
+      } else if (pessoa.trabalhando === false) {
+        pessoa.salario = null;
+        pessoasDesempregadas.push(pessoa);
+      }
+
+      continuar = confirm("Deseja Continuar?");
+    } while (continuar);
+  }
+  cadastrarPessoa();
+
+  console.log(
+    pessoasDesempregadas,
+    empregadosSalarioMaior2500,
+    empregadosSalarioMenor2500
+  );
+}
