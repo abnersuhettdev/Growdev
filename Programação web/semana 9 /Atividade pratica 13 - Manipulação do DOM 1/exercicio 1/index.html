@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prática DOM</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #586994;
+        font-family: sans-serif;
+      }
+      button {
+        font-family: sans-serif;
+        width: 300px;
+        height: 100px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+        margin-bottom: 20px;
+        background-color: #0a1045;
+        color: white;
+      }
+      button:hover {
+        background-color: #1f1a49b6;
+      }
+      div {
+        width: 400px;
+        height: 130px;
+        background-color: #f1f1f171;
+        font-size: 1.5em;
+        text-align: center;
+        color: #040f16;
+        border: 5px dashed #0a1045;
+        border-radius: 8px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">Clique aqui para mudar o Texto</button>
+    <div>
+      <p id="text"></p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

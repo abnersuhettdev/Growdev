@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador de Cliques</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 10px;
+        font-size: 2em;
+        font-family: monospace;
+        background-color: #f1f1f1;
+      }
+      div {
+        display: flex;
+        gap: 15px;
+      }
+      button {
+        width: 150px;
+        height: 90px;
+        border-radius: 8px;
+        border: none;
+        font-size: 0.5em;
+        font-family: monospace;
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 0.171);
+      }
+      button:focus {
+        border: 2px solid #3e442b;
+      }
+      #add {
+        background-color: #3bceac;
+        color: white;
+      }
+      #add:hover {
+        background-color: #0ead69;
+      }
+      #clear {
+        background-color: white;
+      }
+      #clear:hover {
+        background-color: #bcbdc0;
+        color: white;
+      }
+      strong {
+        color: #ee4266;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button id="add">Incrementar</button>
+      <button id="clear">Zerar Contador</button>
+    </div>
+    <p>O contador está com <strong id="clickCount">0</strong> Cliques</p>
+
+    <script src="script.js"></script>
+  </body>
+</html>
