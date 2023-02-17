@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Cadastro de Dev</h2>
+
+    <form id="formularioCadastro" onsubmit="cadastrarDev(event)">
+      <fieldset>
+        <legend>Dados pessoais:</legend>
+
+        <label for="nomeCompleto">Nome completo:</label>
+        <input
+          type="text"
+          id="nomeCompleto"
+          name="nomeCompleto"
+          placeholder="Digite seu nome..."
+        />
+
+        <br /><br />
+
+        <label for="dataNascimento">Data de nascimento:</label>
+        <input type="date" name="dataNascimento" id="dataNascimento" />
+
+        <br /><br />
+
+        <label for="email">E-mail:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="exemplo@email.com"
+        />
+
+        <br /><br />
+
+        <label for="whats">WhatsApp:</label>
+        <input
+          type="tel"
+          name="whats"
+          id="whats"
+          placeholder="+xx (xx) x xxxx-xxxx"
+        />
+
+        <br /><br />
+
+        <label for="enderecoCompleto">Endereço completo:</label>
+        <input
+          type="text"
+          id="enderecoCompleto"
+          name="enderecoCompleto"
+          placeholder="Rua tal, numero tal, cidade tal"
+        />
+
+        <br /><br />
+
+        <label for="pretencaoSalarial">Pretenção Salarial:</label>
+        <input
+          type="number"
+          name="pretencaoSalarial"
+          id="pretencaoSalarial"
+          placeholder="2500.00"
+        />
+
+        <br /><br />
+      </fieldset>
+      <br /><br />
+      <fieldset>
+        <legend>Conhecimentos:</legend>
+        <label for=""><strong>Area de Atuação:</strong></label>
+        <br />
+        <input type="radio" name="areaAtuacao" id="frontEnd" checked />
+        <label for="frontEnd">Front-end</label>
+        <br />
+        <input type="radio" name="areaAtuacao" id="backEnd" />
+        <label for="backEnd">Back-end</label>
+        <br />
+        <input type="radio" name="areaAtuacao" id="fullStack" />
+        <label for="fullStack">Full-Stack</label>
+
+        <br /><br />
+
+        <label for="senioridade">Senioridade:</label>
+        <select name="senioridade" id="senioridade">
+          <option value="" disabled selected>Selecione</option>
+          <option value="">Junior</option>
+          <option value="">Pleno</option>
+          <option value="">Senior</option>
+        </select>
+
+        <br /><br />
+
+        <label for="tecnologias"><strong>Tecnologias:</strong></label>
+        <br />
+        <input type="checkbox" name="html" id="html" />
+        <label for="html">HTML</label>
+        <br />
+        <input type="checkbox" name="javascript" id="javascript" />
+        <label for="javascript">JavaScript</label>
+        <br />
+        <input type="checkbox" name="css" id="css" />
+        <label for="css">CSS</label>
+        <br />
+        <input type="checkbox" name="node" id="node" />
+        <label for="node">NodeJS</label>
+        <br />
+        <input type="checkbox" name="typescript" id="typescript" />
+        <label for="typescript">TypeScript</label>
+        <br />
+        <input type="checkbox" name="postgresql" id="postgresql" />
+        <label for="postgresql">PostgreSQL</label>
+        <br />
+        <input type="checkbox" name="java" id="java" />
+        <label for="java">Java</label>
+        <br />
+        <input type="checkbox" name="csharp" id="csharp" />
+        <label for="csharp">C#</label>
+        <br />
+
+        <label for="experiencia">Conte um pouco da sua experiencia</label>
+        <br />
+        <textarea
+          name="experiencia"
+          id="experiencia"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <br /><br />
+
+        <label for="foto">Insira uma foto sua</label>
+        <br />
+        <input type="file" name="foto" id="foto" accept=".png, .jpg, .jpeg" />
+      </fieldset>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
