@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CARS</title>
+
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+
+        background-color: #000000;
+        color: white;
+        font-family: monospace;
+      }
+      div {
+        display: grid;
+        place-items: center;
+        gap: 30px;
+        max-width: 400px;
+        text-align: center;
+      }
+      button {
+        font-family: monospace;
+        width: 150px;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #7c7c7c;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Bem vindo ao sistema de CRUD de veículos</h1>
+      <button onclick="init()">Iniciar</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
