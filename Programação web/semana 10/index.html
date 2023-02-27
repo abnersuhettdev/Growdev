@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
     <title>CARS</title>
 
     <style>
@@ -12,7 +13,7 @@
         align-items: center;
         justify-content: center;
         height: 100vh;
-
+        overflow: hidden;
         background-color: #000000;
         color: white;
         font-family: monospace;
@@ -30,6 +31,10 @@
         height: 50px;
         cursor: pointer;
         border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
       }
 
       button:hover {
@@ -41,9 +46,8 @@
   <body>
     <div>
       <h1>Bem vindo ao sistema de CRUD de veículos</h1>
-      <button onclick="init()">Iniciar</button>
+      <button onclick="init()">Iniciar <i class="ph-car"></i></button>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
