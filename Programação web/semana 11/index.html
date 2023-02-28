@@ -8,35 +8,93 @@
     <style>
         body{
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f1f1;
         }
         fieldset{
             width: 100%;
+            margin-top: 15px;
+            border: 4px solid black;
         }
         div{
             display: grid;
-            place-content: start;
-        }
-        input, label{
-            margin: 10px 0;
+            place-items: center;
         }
         
+        
+        h1{
+            text-align: center;
+
+        }
+        legend{
+            background-color: #083D77;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        select, input{
+            height: 30px;
+            
+        }
+
+        #dadosPessoais {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        #dadosProfissionais{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #dadosProfissionais div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #btn, button{
+            height: 50px;
+            width: 100px;
+            background-color: #083D77;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        #btn:hover, button:hover{
+            background-color: #2e70b8;
+        }
+        #btnDiv{
+            display: flex;
+           
+            justify-content: center;
+            gap: 20px
+           
+        }
     </style>
 <body>
     <div>
         <h1>Formulário </h1>
         <form id="formulario">
-        <fieldset>
+        <fieldset id="dadosPessoais">
             <legend>Dados Pessoais</legend>
         
                     <label for="nome">Nome:</label>
                     <input required type="text" name="nome" id="nome">
-                    <br>
+                  
                     <label for="endereco">Endereço: </label>
                     <input required type="text" name="endereco" id="endereco">
-                   <br>
+                 
                     <label for="cidade">Cidade: </label>
                     <input required type="text" name="cidade" id="cidade">
-                <br>
+              
                     <label for="estado">Estado: </label>
                     <select required name="estado" id="estado">
                         <option value="0" selected disabled>Selecione um Estado</option>
@@ -69,56 +127,48 @@
                     </select>
         
         </fieldset>
-        <fieldset>
+        <fieldset id="dadosProfissionais">
             <legend>Dados Profissionais</legend>
                 
-            <label for="naturezaCargo">Natureza do Cargo</label>
-            <br>
-                <input type="radio" name="naturezaCargo" value='gerencia' id="gerencia">
-                <label for="Gerência">Gerência</label>
-
-                <input type="radio" name="naturezaCargo" id="financeiro" value='financeiro'>
-                <label for="Financeiro">Financeiro</label>
-
-                <input type="radio" name="naturezaCargo" id="Recepção" value='recepção' checked>
-                <label for="Recepcão">Recepção</label>
-
-                <input type="radio" name="naturezaCargo" id="administrativo" value='administrativo'>
-                <label for="Administrativo">Administrativo</label>
-
-                <input type="radio" name="naturezaCargo" value='juridico' id="juridico">
-                <label for="Jurídico">Juridico</label>
+            <div>
+                <label for="naturezaCargo">Natureza do Cargo</label>
+                <br>
+                    <input type="radio" name="naturezaCargo" value='gerencia' id="gerencia" checked>
+                    <label for="Gerência">Gerência</label>
+                    <input type="radio" name="naturezaCargo" id="financeiro" value='financeiro'>
+                    <label for="Financeiro">Financeiro</label>
+                    <input type="radio" name="naturezaCargo" id="Recepção" value='recepção' >
+                    <label for="Recepcão">Recepção</label>
+                    <input type="radio" name="naturezaCargo" id="administrativo" value='administrativo'>
+                    <label for="Administrativo">Administrativo</label>
+                    <input type="radio" name="naturezaCargo" value='juridico' id="juridico">
+                    <label for="Jurídico">Juridico</label>
+            </div>
 
 
-            <br><br>
             
-                <label for="areaInteresse">Área de interesse</label>
-
-            <br>   
-
-                <input type="checkbox" name="areaInteresse" id="computacao" value="Computação">
-                <label for="computacao">Computação</label>
-
-                <input type="checkbox" name="areaInteresse" id="biologia" value="Biologia">
-                <label for="biologia">Biologia</label>
-
-                <input type="checkbox" name="areaInteresse" id="meio-ambiente" value="Meio Ambiente">
-                <label for="meioAmbiente">Meio Ambiente</label>
-
-                <input type="checkbox" name="areaInteresse" id="engenharia" value="Engenharia">
-                <label for="engenharia">Engenharia</label>
-
-                <input type="checkbox" name="areaInteresse" id="historia" value="História">
-                <label for="historia">História</label>
-                
-                <br><br>
-
+                <div>
+                    <label for="areaInteresse">Área de interesse</label>
+                    <input type="checkbox" name="areaInteresse" id="computacao" value="Computação">
+                    <label for="computacao">Computação</label>
+                    <input type="checkbox" name="areaInteresse" id="biologia" value="Biologia">
+                    <label for="biologia">Biologia</label>
+                    <input type="checkbox" name="areaInteresse" id="meio-ambiente" value="Meio Ambiente">
+                    <label for="meioAmbiente">Meio Ambiente</label>
+                    <input type="checkbox" name="areaInteresse" id="engenharia" value="Engenharia">
+                    <label for="engenharia">Engenharia</label>
+                    <input type="checkbox" name="areaInteresse" id="historia" value="História">
+                    <label for="historia">História</label>
+                    
+                </div>
                 <label for="curriculo">Mini-currículo:</label>
-                <textarea name="curriculo" id="curriculo" cols="30" rows="5"></textarea>
+                    <textarea name="curriculo" id="curriculo" cols="30" rows="5"></textarea>
         </fieldset>
         <br>
-        <button id="enviar">Enviar</button>
-        <input type="reset" value="Limpar">
+        <div id="btnDiv">
+            <button id="enviar">Enviar</button>
+            <input id="btn" type="reset" value="Limpar">
+        </div>
         </form>
     </div>
 
