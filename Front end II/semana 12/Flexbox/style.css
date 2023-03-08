@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+nav ul{
+    list-style: none;
+}
+nav ul li{
+    display: inline-block;
+    margin: 10px;
+    
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+nav ul li a:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Estilos Main */
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+main section{
+    flex: 1;
+    margin-right: 20px;
+}
+
+section:last-child{
+    margin-right: 0;
+
+}
+
+article{
+    background-color: #eee;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+article a{
+    display: block;
+    margin-top: 10px ;
+    background-color: #333;
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Barra lateral */
+
+aside{
+    background-color: #eee;
+    flex-basis: 200px;
+    padding: 20px;
+    
+}
+
+footer{
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
