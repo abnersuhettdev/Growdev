@@ -1,0 +1,190 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color:grey;
+  overflow: hidden;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn1{
+  width: 100px;
+  height: 60px;
+  margin-left: 80%;
+  margin-top: 40%;
+  animation: animacao 2s ease-in-out 4s infinite;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.012);
+  color: white;
+  border: 0px;
+  cursor: pointer;
+  text-shadow: 0 0 1px rgb(255, 255, 255);
+  font-size: 0.8em;
+ 
+}
+
+
+.btn2{
+  width: 100px;
+  height: 60px;
+  padding: 2px;
+  position: absolute;
+  margin-left: 60%;
+  margin-top: 40%;
+  animation: animacao 2s ease-in-out 4s infinite;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  text-shadow: 0 0 1px rgb(255, 255, 255);
+
+}
+.linkTrailer {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  text-shadow: 0 0 1px rgb(255, 255, 255);
+}
+
+.imagemFundo {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  animation: fundoDark 7s ease-in-out 1s infinite;
+}
+
+.logo {
+position: absolute;
+width: 400px;
+opacity: 0;
+animation: logoFade 3s ease-out 1s forwards;
+
+}
+
+.feiticeiraScarlate{
+  position: absolute;
+  width: 500px;
+  height: 600px;
+  left: 68%;
+  bottom: 18%;
+  transform: rotate(-5deg);
+  animation: scarlate 3s linear 3s forwards;
+  z-index: 3;
+  opacity: 0;
+}
+
+.doctorStrange {
+  position: absolute;
+  width: 400px;
+  bottom: 30%;
+  opacity: 0;
+  animation: drStrange 3s linear  1s forwards;
+}
+
+.americaChaves{
+  position: absolute;
+  height: 650px;
+  width: 360px;
+  left: 5.4%;
+  bottom: 5%;
+  z-index: 0;
+  animation: scarlate 3s linear 3s forwards;
+  opacity: 0;
+}
+
+
+@keyframes fundoDark {
+0% {
+  transform: scale(1);
+}
+50% {
+  transform: scale(1.1);
+}
+100%{
+  transform: scale(1);
+}
+}
+
+@keyframes logoFade {
+0% {
+  bottom: 0%;
+  opacity: 0;
+}
+
+50% {
+
+  opacity: 0.5;
+}
+
+75% {
+
+  opacity: 0.7;
+}
+
+100% {
+  width: 500px;
+  bottom: 5%;
+  opacity: 1;
+}
+}
+
+
+@keyframes drStrange {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    width: 500px;
+    opacity: 0.3;
+  }
+
+  50%{
+
+    opacity: 0.7;
+  }
+
+  75%{
+
+    opacity: 0.7;
+  
+  }
+  
+  100%{
+    bottom: 30%;
+    width: 700px;
+    opacity: 1;
+  }
+}
+
+@keyframes scarlate {
+  0% { opacity: 0; }
+  
+  100% { opacity: 1; }
+}
+
+@keyframes animacao {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
