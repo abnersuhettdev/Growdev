@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 body {
   background-color:grey;
@@ -12,32 +13,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.btn1{
-  width: 100px;
-  height: 60px;
-  margin-left: 80%;
-  margin-top: 40%;
-  animation: animacao 2s ease-in-out 4s infinite;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.012);
-  color: white;
-  border: 0px;
-  cursor: pointer;
-  text-shadow: 0 0 1px rgb(255, 255, 255);
-  font-size: 0.8em;
- 
+#btn{
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
 }
-
-
-.btn2{
+#btn >button{
   width: 100px;
   height: 60px;
   padding: 2px;
-  position: absolute;
-  margin-left: 60%;
-  margin-top: 40%;
+  
   animation: animacao 2s ease-in-out 4s infinite;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0);
@@ -46,8 +36,8 @@ body {
   cursor: pointer;
   text-decoration: none;
   text-shadow: 0 0 1px rgb(255, 255, 255);
-
 }
+
 .linkTrailer {
   text-decoration: none;
   color: white;
@@ -72,14 +62,33 @@ animation: logoFade 3s ease-out 1s forwards;
 
 .feiticeiraScarlate{
   position: absolute;
-  width: 500px;
+  width: 600px;
   height: 600px;
-  left: 68%;
-  bottom: 18%;
+  right: 0;
+  top: 13%;
   transform: rotate(-5deg);
   animation: scarlate 3s linear 3s forwards;
-  z-index: 3;
   opacity: 0;
+}
+
+#wandaPower{
+  position: absolute;
+  right: 15%;
+  top: 8%;
+  width: 500px;
+  height: 300px;
+  animation: scarletPowers 10s linear 3s infinite alternate;
+  opacity: 0;
+}
+#wandaPower2{
+  position: absolute;
+  right: 0;
+  bottom: 0%;
+  width: 600px;
+  height: 500px;
+  opacity: 0;
+  animation: scarletPowers2 6s ease-in-out 3s infinite alternate;
+   
 }
 
 .doctorStrange {
@@ -87,18 +96,54 @@ animation: logoFade 3s ease-out 1s forwards;
   width: 400px;
   bottom: 30%;
   opacity: 0;
+  
+}
+.doctorStrangeAnimation{
   animation: drStrange 3s linear  1s forwards;
+}
+
+#drStrangePower1{
+  position: absolute;
+  width: 150px;
+  bottom: 63%;
+  right: 64%;
+  animation: drStrangePowers 3s ease-in-out  4s infinite;
+  opacity: 0;
+}
+#drStrangePower2{
+  width: 200px;
+  position: absolute;
+  bottom: 36%;
+  left: 60%;
+  animation: drStrangePowers 3s linear 4s infinite;
+  opacity: 0;
 }
 
 .americaChaves{
   position: absolute;
-  height: 650px;
-  width: 360px;
-  left: 5.4%;
+  height: 740px;
+  width: 380px;
+  left: 7%;
   bottom: 5%;
+  
   z-index: 0;
-  animation: scarlate 3s linear 3s forwards;
+  
   opacity: 0;
+}
+
+#americaCircle{
+  animation: scarlate 3s linear 3s forwards; 
+  position: absolute;
+  height: 600px;
+  width: 600px;
+  left: 1%;
+  bottom: 15%;
+  animation: americaPowers 2s linear 6s infinite ;
+  opacity: 0;
+}
+
+.americaAnimation{
+  animation: scarlate 3s linear 3s forwards; 
 }
 
 
@@ -166,6 +211,27 @@ animation: logoFade 3s ease-out 1s forwards;
   }
 }
 
+@keyframes drStrangePowers {
+  
+  0% {
+    
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
+            opacity: 0.8;
+  }
+
+  50% {
+    -webkit-transform: scale(1.3) rotateZ(180deg);
+            transform: scale(1.3) rotateZ(180deg);
+            opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
+            opacity: 1;
+  }
+}
+
 @keyframes scarlate {
   0% { opacity: 0; }
   
@@ -177,8 +243,6 @@ animation: logoFade 3s ease-out 1s forwards;
     transform: scale(1);
     opacity: 0.5;
   }
-
-
   50% {
     transform: scale(1.1);
     opacity: 1;
@@ -186,5 +250,48 @@ animation: logoFade 3s ease-out 1s forwards;
   100% {
     transform: scale(1);
     opacity: 0.5;
+  }
+}
+
+@keyframes scarletPowers {
+    0% {
+      opacity: 0.2; 
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+   
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+              opacity: 1;
+    }
+}
+
+@keyframes scarletPowers2 {
+  0% {
+    -webkit-transform: translateX(0);
+          transform: translateX(0);
+          opacity: 0.5;
+  }
+
+ 
+  100%{
+    -webkit-transform: translateX(80px);
+    transform: translateX(80px);
+    opacity: 1; 
+  }
+}
+
+@keyframes americaPowers {
+  0% {
+    opacity: 0.8; 
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+ 
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            opacity: 0.9;
   }
 }
