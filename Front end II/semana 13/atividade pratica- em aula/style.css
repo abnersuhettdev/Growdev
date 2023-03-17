@@ -1,0 +1,10 @@
+.float-button{
+    right: 2rem;
+    bottom: 2rem;
+
+    width: 3rem;
+    height:3rem;;
+}
+body{
+    height: 300vh;
+}
