@@ -1,14 +1,25 @@
 const form = document.querySelector("#form-cadastro");
+const formAtualizar = document.querySelector("#form-editar")
+
 const divContatos = document.querySelector("#contatos");
 const containerNotification = document.querySelector('.toast-container');
+
+const nameUpdate = document.querySelector('#name-update');
+const phoneUpdate = document.querySelector("#telefone-update");
 
 //como manipular um MODAL do Bootstrap utilizando JS
 const modalCadastro = new bootstrap.Modal("#modal-cadastro");
 const modalApagar = new bootstrap.Modal("#modal-apagar");
+const modalEditar = new bootstrap.Modal("#modal-editar");
 
 let listaContatos = JSON.parse(localStorage.getItem("contatos")) ?? [];
+let idAtualizar = -1
 
-
+document.addEventListener('DOMContentLoaded', ()=>{
+  listaContatos.forEach(contato => {
+    addContato(contato)
+  });
+})
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -45,6 +56,50 @@ form.addEventListener("submit", (e) => {
   form.classList.remove('was-validated')
 });
 
+formAtualizar.addEventListener('submit',(e)=>{
+  e.preventDefault();  
+
+  if (!formAtualizar.checkValidity()) {
+    formAtualizar.classList.add("was-validated");
+    return;
+  }
+
+  // some => desconsiderar o id que esta sendo atualizado
+  const exist = listaContatos.some((contato) => {
+    if(contato.id === idAtualizar) {
+        return false
+    }
+
+    return contato.phone === phoneUpdate.value
+  })
+
+    if(exist) {
+    modalEditar.hide()
+    showAlert('danger', 'Esse número já esta salvo como outro contato!')
+    return
+  }
+
+  // ATUALIZAR A LISTA LOCAL
+  const indiceUpdate = listaContatos.findIndex((contato) => contato.id === idAtualizar);
+  listaContatos[indiceUpdate].name = nameUpdate.value
+  listaContatos[indiceUpdate].phone = phoneUpdate.value
+  
+  //Atualiza Local Storage
+  localStorage.setItem("contatos", JSON.stringify(listaContatos))
+
+  //Atualiza Elemento da Dom
+  const cardTitle = document.querySelector(`#contato-${idAtualizar} .card-title`)
+  cardTitle.innerText = nameUpdate.value
+
+  const cardText = document.querySelector(`#contato-${idAtualizar} .card-text`)
+  cardText.innerText = phoneUpdate.value
+
+  modalEditar.hide();
+  showAlert("success", "Contato atualizado com sucesso")
+  idAtualizar = -1
+  formAtualizar.classList.remove('was-validated')
+} )
+
 function criaID() {
   return new Date().getTime();
 }
@@ -54,7 +109,7 @@ function addContato(contato) {
 
   const divCol = document.createElement("div");
   divCol.setAttribute("class", "col-12 col-sm-6 col-lg-4 col-xl-3");
-  divCol.setAttribute("id", `${id}`)
+  divCol.setAttribute("id", `contato-${id}`)
 
   const divCard = document.createElement("div");
   divCard.classList.add("card");
@@ -72,7 +127,14 @@ function addContato(contato) {
 
   const editBtn = document.createElement("button");
   editBtn.classList.add("btn", "btn-success", "m-1");
-  editBtn.setAttribute('onclick', `editar("${id}", "${name}","${phone}")`)
+  editBtn.addEventListener('click', ()=> {
+    modalEditar.show();
+    
+    nameUpdate.value = name;
+    phoneUpdate.value = phone;
+
+    idAtualizar = id 
+  })
   editBtn.innerHTML = '<i class="bi bi-pencil-square"></i>';
 
   const deleteBtn = document.createElement("button");
@@ -95,12 +157,6 @@ function addContato(contato) {
   divContatos.appendChild(divCol);
 }
 
-function editar(id, name, phone){
-  console.log(id)
-  console.log(name)
-  console.log(phone)
-}
-
 function deletar(id){
   //excluir da lista de contatos local
   const indiceId = listaContatos.findIndex(
@@ -112,11 +168,12 @@ function deletar(id){
   localStorage.setItem("contatos", JSON.stringify(listaContatos))
 
   //excluir a col da dom
-  const col = document.getElementById(`${id}`)
+  const col = document.getElementById(`contato-${id}`)
   col.remove()
   
 
   modalApagar.hide()
+  showAlert('success','Contato deletado com sucesso')
 }
 
 function showAlert(modo, mensagem){
@@ -133,7 +190,7 @@ function showAlert(modo, mensagem){
 
   const toastBody = document.createElement('div');
   toastBody.classList.add('toast-body');
-  toastBody.innerText = mensagem
+  toastBody.innerText = `${mensagem}`
 
   const btn = document.createElement('button')
   btn.setAttribute('type', 'button')
@@ -146,11 +203,10 @@ function showAlert(modo, mensagem){
   toast.appendChild(content)
 
   containerNotification.appendChild(toast)
+
+  setTimeout(()=>{
+    toast.remove()
+  }, 5000)
 }
 
 
-document.addEventListener('DOMContentLoaded', ()=>{
-  listaContatos.forEach(contato => {
-    addContato(contato)
-  });
-})

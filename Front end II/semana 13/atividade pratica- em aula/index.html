@@ -41,7 +41,7 @@
       <i class="bi bi-plus-lg"></i>
     </button>
 
-    <!-- Modal -->
+    <!-- Modal Cadastrar-->
     
     <div id="modal-cadastro" class="modal" tabindex="-1">
       <div class="modal-dialog">
@@ -106,6 +106,73 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal Editar -->
+    <div id="modal-editar" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar contato</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <form id="form-editar" class="needs-validation" novalidate>
+            <div class="modal-body">
+              <!-- Formulário de Cadastro -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Nome:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="name-update"
+                  required
+                  minlength="3"
+                />
+                <div class="invalid-feedback">
+                  Digite um nome válido. No mínimo 3 caracteres.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="telefone"
+                  id="telefone-update"
+                  required
+                  minlength="15"
+                  maxlength="15"
+                  placeholder="Ex: (12) 33344-5566"
+                />
+                <div class="invalid-feedback">
+                  Digite um telefone válido. Siga o modelo informado
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="reset"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Atualizar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
 
     <!-- Modal Apagar -->
     <div id="modal-apagar" class="modal" tabindex="-1">
