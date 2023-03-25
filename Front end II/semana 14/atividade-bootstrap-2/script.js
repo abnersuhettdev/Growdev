@@ -27,15 +27,15 @@ function nao(){
 const accordion = document.getElementById('accordion')
 
 const listaTarefas = [{
-    codigo: '#1',
+    codigo: '1',
     nome: 'Trabalhar',
     detalhamento : 'das 08h até 17h'
 },{
-    codigo: '#2',
+    codigo: '2',
     nome: 'Exercitar',
     detalhamento : 'das 17:15 até 18:40h'
 },{
-    codigo: '#3',
+    codigo: '3',
     nome: 'Estudar',
     detalhamento : 'das 19h até 22:30h'
 }]
@@ -75,7 +75,7 @@ function criarItem(tarefa){
     accordionButton.setAttribute('data-bs-target',`#flush-collapse${tarefa.codigo}`)
     accordionButton.setAttribute('aria-expanded',"false")
     accordionButton.setAttribute('aria-controls',`#flush-collapse${tarefa.codigo}`)
-    accordionButton.innerText = `${tarefa.nome} ${tarefa.codigo}`
+    accordionButton.innerText = `${tarefa.nome} #${tarefa.codigo}`
 
     const accordionDiv = document.createElement('div')
     accordionDiv.setAttribute('id', `flush-collapse${tarefa.codigo}`)
