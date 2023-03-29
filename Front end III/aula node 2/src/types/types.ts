@@ -5,3 +5,8 @@ export interface IUser{
     senha: string,
 }
 
+export interface aluno{
+    nome: string,
+    matricula: string,
+    curso: string,
+}
