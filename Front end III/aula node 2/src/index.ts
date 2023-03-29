@@ -29,3 +29,12 @@ import { resposta } from "./resposta";
 console.log(media(1, 2));
 resposta(5)
 */
+
+/*Criar um programa para cadastrar, listar e excluir alunos
+const bancodedados = []
+
+interface aluno {
+nome: string
+matricula: string
+id: string
+}*/
