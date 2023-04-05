@@ -1,5 +1,5 @@
-import {Produto} from "../types"
+import { Produto } from '../types';
 
-const estoque : Produto[] = []
+const listaProdutos: Partial<Produto[]> = [];
 
-export default estoque
+export default listaProdutos;

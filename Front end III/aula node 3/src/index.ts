@@ -1,46 +1,47 @@
-import estoque from "./database";
-import criarProduto from "./features/produtos/criar-produto";
-import { Produto } from "./types";
+import { criarProduto, deleteProduct, editProduct } from './features/products';
+import { Produto } from './types';
+import listaProdutos from './database';
 
-const mouse : Produto = {
-    id: '123245',
-    nome: 'Mouse',
-    preco: 100,
-    categoria: {
-        nome: 'Periféricos',
-        tags:['NOVOS']
-    },
-    quantidade: 23,
-    genero: "ELETRONICOS",
-}
+const teclado: Produto = {
+	id: '1234567',
+	nome: 'Teclado Red Dragon',
+	preco: 189.9,
+	categoria: {
+		nome: 'Periféricos',
+		tags: ['NOVOS'],
+	},
+	quantidade: 23,
+	genero: 'ELETRONICOS',
+};
 
-const teclado : Produto = {
-    id: '123245',
-    nome: 'Teclado',
-    preco: 99,
-    categoria: {
-        nome: 'Periféricos',
-        tags:['NOVOS', "BLACKFRIDAY"]
-    },
-    quantidade: 12,
-    genero: "ELETRONICOS",
-}
+const monitor: Produto = {
+	id: '123456789',
+	nome: 'Monitor Acer',
+	preco: 500.0,
+	categoria: {
+		nome: 'Periféricos',
+		tags: ['USADOS'],
+	},
+	quantidade: 3,
+	genero: 'GAMER',
+};
 
-const monitor : Produto = {
-    id: '123245',
-    nome: 'Monitor',
-    preco: 200,
-    categoria: {
-        nome: 'Periféricos',
-        tags:['NOVOS', "BLACKFRIDAY"]
-    },
-    quantidade: 30,
-    genero: "ELETRONICOS",
-}
+const mouse: Produto = {
+	id: '123',
+	nome: 'Mouse Logitech',
+	preco: 70.0,
+	categoria: {
+		nome: 'Periféricos',
+		tags: ['BLACKFRIDAY'],
+	},
+	quantidade: 40,
+	genero: 'GAMER',
+};
 
+criarProduto(teclado);
+criarProduto(mouse);
+criarProduto(monitor);
 
-criarProduto(mouse)
-criarProduto(teclado)
-criarProduto(monitor)
-
-console.log(estoque)
+// console.log(deleteProduct('123'))
+console.log(editProduct('123', 'Rato Logitech', 100, 20 ))
+// console.log(listaProdutos);
