@@ -4,12 +4,6 @@ import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 
-// function AppRoutes() {
-//   return (
-//     <div>AppRoutes</div>
-//   )
-// }
-
 const AppRoutes : React.FC = () => {
     return (
         <BrowserRouter>
