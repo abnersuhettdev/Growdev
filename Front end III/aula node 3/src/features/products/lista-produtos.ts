@@ -1,7 +1,7 @@
 import listaProdutos from "../../database";
 
-const listProducts = () => {
+const listarProdutos = () => {
   listaProdutos.forEach((product) => console.log(product));
 };
 
-export default listProducts;
+export default listarProdutos;

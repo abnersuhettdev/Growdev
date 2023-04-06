@@ -3,20 +3,20 @@ import { Tag } from "../../types";
 
 const addTag = (id:string ,tagsAdicionadas: Tag) =>{
 
-    const foundProduct = listaProdutos.find((produto) => produto.id === id);
+    const produto = listaProdutos.find((produto) => produto.id === id);
 
-    if(!foundProduct){
+    if(!produto){
         console.log("Produto não encontrado!")
         return
     }
 
-    if(foundProduct.categoria.tags.includes(tagsAdicionadas)){
+    if(produto.categoria.tags.includes(tagsAdicionadas)){
         console.log("Tag Já adicionada ao item")
         return
     }
 
-    foundProduct.categoria.tags.push(tagsAdicionadas) 
-    console.log(foundProduct)
+    produto.categoria.tags.push(tagsAdicionadas) 
+    console.log(produto)
 }
 
 export default addTag

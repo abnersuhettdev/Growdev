@@ -1,7 +1,7 @@
 import listaProdutos from "../../database";
 import { Produto } from "../../types";
 
-export const editProduct = (
+const editaProduto = (
   id: string,
   nome: string,
   quantidade: number,
@@ -26,3 +26,5 @@ export const editProduct = (
   listaProdutos.splice(produtoToDeleteIndex, 1, newProduct);
   return listaProdutos;
 };
+
+export default editaProduto

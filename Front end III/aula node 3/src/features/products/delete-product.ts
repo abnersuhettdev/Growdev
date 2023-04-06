@@ -1,13 +1,15 @@
 import { Produto } from '../../types';
 import listaProdutos from '../../database';
 
-export const deleteProduct = (id:string) :string | Partial<Produto[]> => {
-    const indexProduct = listaProdutos.findIndex((produto)=> produto!.id === id);
+const deletaProduto = (id:string) :string | Partial<Produto[]> => {
+    const indexProduto = listaProdutos.findIndex((produto)=> produto!.id === id);
 
-    if(indexProduct === -1){
+    if(indexProduto === -1){
         return "Produto não encontrado"
     }
 
-    listaProdutos.splice(indexProduct,1)
+    listaProdutos.splice(indexProduto,1)
     return listaProdutos
 }
+
+export default deletaProduto

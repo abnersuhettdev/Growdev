@@ -1,19 +1,19 @@
-import createProduct from "./create-product";
-import { deleteProduct } from "./delete-product";
-import { editProduct } from "./edit-product";
-import listProducts from "./list-product";
-import listByCategory from "./list-by-category";
-import listByPrice from "./list-by-price";
-import listByTag from "./list-by-tags";
+import criaProduto from "./create-product";
+import deletaProduto  from "./delete-product";
+import editaProduto  from "./edita-produto";
+import listarProdutos from "./lista-produtos";
+import listaPorCategoria from "./lista-por-categoria";
+import listaPorPreco from "./lista-por-preco";
+import listaPorTag from "./lista-por-tag";
 import addTag from "./add-tag";
 
 export {
-  createProduct,
-  deleteProduct,
-  editProduct,
-  listProducts,
-  listByCategory,
-  listByPrice,
-  listByTag,
+  criaProduto,
+  deletaProduto,
+  editaProduto,
+  listarProdutos,
+  listaPorCategoria,
+  listaPorPreco,
+  listaPorTag,
   addTag
 };

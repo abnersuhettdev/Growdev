@@ -1,7 +1,7 @@
 import { Produto } from "../../types";
 import listaProdutos from "../../database";
 
-function createProduct(produto: Produto) {
+function criaProduto(produto: Produto) {
   const nomeEncontrado = listaProdutos.some(
     (item) => item!.nome === produto.nome
   );
@@ -13,4 +13,4 @@ function createProduct(produto: Produto) {
   }
 }
 
-export default createProduct;
+export default criaProduto;

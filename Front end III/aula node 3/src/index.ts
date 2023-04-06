@@ -1,11 +1,11 @@
 import {
-	createProduct,
-	deleteProduct,
-	editProduct,
-	listByPrice,
-	listByTag,
-	listProducts,
-	listByCategory,
+	criaProduto,
+	deletaProduto,
+	editaProduto,
+	listaPorPreco,
+	listaPorTag,
+	listarProdutos,
+	listaPorCategoria,
 	addTag
   } from "./features/products";
 
@@ -49,15 +49,18 @@ import {
 	genero: "GAMER",
   };
   
-  createProduct(teclado);
-  createProduct(mouse);
-  createProduct(jogo);
-  editProduct("123", "Rato Logitech", 100, 20);
-  // listByCategory({
-  //   nome: "Jogos",
-  // });
-  // console.log(listByPrice(50, 200));
-  console.log(listByTag("NOVOS"));
-  // listProducts();
+  criaProduto(teclado);
+  criaProduto(mouse);
+  criaProduto(jogo);
+
+  listarProdutos();
+
+  editaProduto("123", "Rato Logitech", 100, 20);
+  
+  listaPorCategoria({nome: "Jogos"});
+
+  console.log(listaPorPreco(50, 200));
+  console.log(listaPorTag("NOVOS"));
+  
   addTag('123', 'NOVOS')
   

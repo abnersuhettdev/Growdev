@@ -1,11 +1,11 @@
 import listaProdutos from "../../database";
 
-const listByPrice = (min: number, max: number) => {
-  const filterList = listaProdutos.filter(
+const listaPorPreco = (min: number, max: number) => {
+  const listaFiltrada = listaProdutos.filter(
     (produto) => produto.preco >= min && produto.preco <= max
   );
 
-  filterList.forEach((product) => {
+  listaFiltrada.forEach((product) => {
     console.log({
       nome: product.nome,
       preco: product.preco,
@@ -13,4 +13,4 @@ const listByPrice = (min: number, max: number) => {
   });
 };
 
-export default listByPrice;
+export default listaPorPreco;
