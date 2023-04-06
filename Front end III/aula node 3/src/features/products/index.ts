@@ -1,9 +1,19 @@
-import criarProduto from './create-product';
-import atualizaProduto from './atualiza-produto';
-import { deleteProduct } from './delete-product';
-import { editProduct } from './edit-product';
+import createProduct from "./create-product";
+import { deleteProduct } from "./delete-product";
+import { editProduct } from "./edit-product";
+import listProducts from "./list-product";
+import listByCategory from "./list-by-category";
+import listByPrice from "./list-by-price";
+import listByTag from "./list-by-tags";
+import addTag from "./add-tag";
 
-export { criarProduto };
-export {atualizaProduto}
-export {deleteProduct}
-export {editProduct}
+export {
+  createProduct,
+  deleteProduct,
+  editProduct,
+  listProducts,
+  listByCategory,
+  listByPrice,
+  listByTag,
+  addTag
+};

@@ -1,5 +1,5 @@
 import { Produto } from '../types';
 
-const listaProdutos: Partial<Produto[]> = [];
+const listaProdutos: Produto[]= [];
 
 export default listaProdutos;
