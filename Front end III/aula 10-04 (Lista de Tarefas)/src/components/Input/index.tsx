@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CustomInput from "./styles";
 
 interface InputProps {
@@ -8,11 +8,8 @@ interface InputProps {
   label?: string;
   showLabel?: boolean;
   id: string;
-}
-
-interface User {
-  email: string;
-  password: string;
+  valor: string;
+  handleChange: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -22,50 +19,21 @@ const Input: React.FC<InputProps> = ({
   type,
   id,
   showLabel,
+  valor,
+  handleChange,
 }) => {
-  const [titulo, setTitulo] = useState("Teste");
-
-  const [users, setUsers] = useState<User[]>([
-    { email: "joao@teste", password: "123" },
-    { email: "mariao@teste", password: "1234" },
-  ]);
-
-  const [loggedUser, setLoggedUser] = useState<User>({
-    email: "",
-    password: "",
-  });
-
-  const newUser: User = {
-    email: "joaquim@teste",
-    password: "12345",
-  };
-
-  //ADICIONAR um novo usuario na lista de usuarios
-
-  //UNSHIFT
-  setUsers((prevState) => [newUser, ...prevState]);
-
-  //PUSH
-  setUsers((prevState) => [...prevState, newUser]); //copia de um determinado array ou objeto
-
-  //REMOVER um usuario da lista
-  setUsers(users.filter((user) => user.email !== "joaquim@teste"));
-
-  const changeTitle = (texto: string) => {
-    setTitulo(texto);
-    console.log(titulo);
-  };
-
   return (
     <>
-      <label htmlFor={id}>{titulo}</label>
-
+      {/* { {showLabel &&}  */}
+      <label htmlFor={id}>{valor}</label>
+      {/* } */}
       <CustomInput
         type={type}
         placeholder={placeholder}
         id={id}
         name={name}
-        onChange={(ev) => changeTitle(ev.target.value)}
+        value={valor}
+        onChange={(ev) => handleChange(ev.target.value)}
       />
     </>
   );
