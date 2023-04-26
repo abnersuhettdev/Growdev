@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from "react";
+import { Typography } from "@mui/material";
+import React, {
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/Button/styles";
 import { Card } from "../../components/Card";
 import Container from "../../components/Container/styles";
 import Title from "../../components/Heading";
-import Input from "../../components/Input";
+import InputRef from "../../components/Input";
 import { Tarefa } from "../../types";
 import { Data, GerarID } from "../../utils/Date";
 
 const Home: React.FC = () => {
-	const [titulo, setTitulo] = useState("");
+	// const [titulo, setTitulo] = useState("");
+	const inputRef = useRef<HTMLInputElement | null>(null);
 	const [tarefas, setTarefas] = useState<Tarefa[]>([]);
+	const [counterA, setcounterA] = useState(0);
 
 	//1 - quando o componente monta
 	useEffect(() => {
@@ -32,7 +41,15 @@ const Home: React.FC = () => {
 	//4- Toda e qualquer alteracao que tiver - Sempre
 	useEffect(() => {
 		console.log("Sem dependencias");
+
+		handleCounterA();
 	});
+
+	useEffect(() => {
+		if (inputRef.current && inputRef.current.value.length < 5) {
+			console.log("Tem menos que 5 caracteres");
+		}
+	}, [inputRef.current]);
 
 	// const TitleMemo = useMemo(() => {
 	// 	return <TitleDefault title="Lista de Tarefas" />;
@@ -43,25 +60,34 @@ const Home: React.FC = () => {
 	const addNewCard = () => {
 		const novaTarefa: Tarefa = {
 			id: GerarID(),
-			titulo,
+			titulo: inputRef.current?.value ?? "",
 			criadoEm: Data(),
 		};
 
 		setTarefas((prevState) => [novaTarefa, ...prevState]);
-		setTitulo("");
+		inputRef.current!.value = "";
 	};
 
+	const handleCounterA = useCallback(() => {
+		setcounterA(tarefas.filter((tarefa) => tarefa.titulo.includes("a")).length);
+	}, [tarefas]);
+
+	const listaMemo = useMemo(() => {
+		return tarefas.map((tarefa) => {
+			return (
+				<Card
+					key={tarefa.id}
+					id={tarefa.id}
+					titulo={tarefa.titulo}
+					criadoEm={tarefa.criadoEm}
+				/>
+			);
+		});
+	}, [tarefas]);
 	return (
 		<Container display="flex" alignItems="center" flexDirection="column">
 			<Title title="Lista de Tarefas" />
-			<Input
-				id="task"
-				name="tarefa"
-				placeholder="Descreva a tarefa..."
-				type="text"
-				valor={titulo}
-				handleChange={setTitulo}
-			/>
+			<InputRef ref={inputRef} />
 
 			<Button onClick={addNewCard}>Adicionar</Button>
 
@@ -74,17 +100,11 @@ const Home: React.FC = () => {
 
 			*/}
 
-			{tarefas.map((tarefa) => {
-				return (
-					<Card
-						key={tarefa.id}
-						id={tarefa.id}
-						titulo={tarefa.titulo}
-						criadoEm={tarefa.criadoEm}
-					/>
-				);
-			})}
+			{listaMemo}
 			<Link to={"/signin"}>Pagina de login</Link>
+
+			<Button onClick={handleCounterA}>Calcular</Button>
+			<Typography variant="h3">{counterA}</Typography>
 		</Container>
 	);
 };
