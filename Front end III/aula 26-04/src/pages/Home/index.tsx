@@ -1,11 +1,12 @@
-import Button from '@mui/material/Button';
 import React from 'react';
+
+import ResponsiveAppBar from '../../components/Appbar';
 
 const Home: React.FC = () => {
 	return (
-		<div>
-			<Button variant="contained">Hello World</Button>
-		</div>
+		<>
+			<ResponsiveAppBar />
+		</>
 	);
 };
 
