@@ -1,10 +1,12 @@
-import { Box, Button, Modal, Typography } from '@mui/material';
+import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
-
-import { Formulario } from '../Formulario';
 
 interface IButtonProps {
 	text: string;
+}
+
+interface IFormProps {
+	label: string;
 }
 
 const style = {
@@ -58,7 +60,17 @@ export const ButtonStyled: React.FC<IButtonProps> = ({ text }) => {
 					>
 						Cadastro
 					</Typography>
-					<Formulario />
+
+					<TextField
+						id="outlined-basic"
+						label="Nome"
+						variant="outlined"
+					/>
+					<TextField
+						id="outlined-basic"
+						label="Sobrenome"
+						variant="outlined"
+					/>
 				</Box>
 			</Modal>
 		</>
