@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 
-import { IContato } from '../../types';
+import { Contexto, IContato } from '../../types';
 import { MyModal } from '../Modal';
 
 interface MyCardProps {
@@ -21,7 +21,7 @@ export const MyCard: React.FC<MyCardProps> = ({
 	setListaContatos,
 }) => {
 	const [open, setOpen] = useState(false);
-	const [contexto, setContexto] = useState<'update' | 'delete'>('delete');
+	const [contexto, setContexto] = useState<Contexto>('create');
 
 	const handleFavorite = () => {
 		setListaContatos((prev) => {
@@ -32,7 +32,7 @@ export const MyCard: React.FC<MyCardProps> = ({
 			// 	}
 			// });
 			// return listaAntigaAux;
-			const copiaLista = prev.map((item) => {
+			return prev.map((item) => {
 				if (item.email === contato.email) {
 					return {
 						...item,
@@ -41,17 +41,12 @@ export const MyCard: React.FC<MyCardProps> = ({
 				}
 				return item;
 			});
-
-			return copiaLista;
 		});
 	};
 
-	const handleDelete = () => {
-		alert(`Deletar  ${contato.nome}`);
-	};
-
-	const handleUpdate = () => {
-		alert(`Deletar  ${contato.nome}`);
+	const handleClick = (context: Contexto) => {
+		setContexto(context);
+		setOpen(true);
 	};
 
 	return (
@@ -71,26 +66,33 @@ export const MyCard: React.FC<MyCardProps> = ({
 						aria-label="toggle favorite"
 						onClick={handleFavorite}
 					>
-						{contato.favorito === true ? (
+						{contato.favorito ? (
 							<FavoriteIcon color="error" />
 						) : (
 							<FavoriteBorder />
 						)}
 					</IconButton>
-					<IconButton onClick={handleDelete} aria-label="delete data">
+					<IconButton
+						onClick={() => handleClick('delete')}
+						aria-label="delete data"
+					>
 						<Delete />
 					</IconButton>
-					<IconButton onClick={handleUpdate} aria-label="update data">
+					<IconButton
+						onClick={() => handleClick('update')}
+						aria-label="update data"
+					>
 						<Edit />
 					</IconButton>
 				</CardActions>
 			</Card>
 
 			<MyModal
-				aberto
-				contexto=""
-				fecharModal={() => setOpen(true)}
-				funcaoModificadora={}
+				aberto={open}
+				contexto={contexto}
+				fecharModal={() => setOpen(false)}
+				funcaoModificadora={setListaContatos}
+				contato={contato}
 			/>
 		</>
 	);

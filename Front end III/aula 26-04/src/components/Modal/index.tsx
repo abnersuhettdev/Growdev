@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { IContato } from '../../types';
 
@@ -15,6 +15,7 @@ interface IModalProps {
 	aberto: boolean;
 	fecharModal: () => void;
 	funcaoModificadora: React.Dispatch<React.SetStateAction<IContato[]>>;
+	contato?: IContato;
 }
 
 export const MyModal: React.FC<IModalProps> = ({
@@ -22,10 +23,19 @@ export const MyModal: React.FC<IModalProps> = ({
 	contexto,
 	fecharModal,
 	funcaoModificadora,
+	contato,
 }) => {
 	const [nome, setNome] = useState('');
 	const [telefone, setTelefone] = useState('');
 	const [email, setEmail] = useState('');
+
+	useEffect(() => {
+		if (contexto === 'update' && contato) {
+			setNome(contato.nome);
+			setEmail(contato.email);
+			setTelefone(contato.telefone);
+		}
+	}, [contexto, contato]);
 
 	const handleSave = () => {
 		switch (contexto) {
@@ -43,10 +53,36 @@ export const MyModal: React.FC<IModalProps> = ({
 				break;
 
 			case 'delete':
+				funcaoModificadora((prev) => {
+					if (contato) {
+						return prev.filter(
+							(item) => item.email !== contato.email,
+						);
+					}
+
+					return prev;
+				});
+
 				break;
 
 			case 'update':
+				// atualiza um determinado item da lista
+				funcaoModificadora((prev) => {
+					return prev.map((item) => {
+						if (contato && contato.email === item.email) {
+							return {
+								...item,
+								nome,
+								telefone,
+								email,
+							};
+						}
+
+						return item;
+					});
+				});
 				break;
+			default:
 		}
 
 		setNome('');

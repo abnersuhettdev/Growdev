@@ -5,3 +5,5 @@ export interface IContato {
 	favorito: boolean;
 	criadoEm: string;
 }
+
+export type Contexto = 'update' | 'delete' | 'create';
