@@ -31,8 +31,12 @@ export const MyCard: React.FC<ICardProps> = ({ titulo, conteudo, notas }) => {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button size="small">Apagar</Button>
-				<Button size="small">Editar</Button>
+				<Button variant="contained" size="small">
+					Apagar
+				</Button>
+				<Button variant="outlined" size="small">
+					Editar
+				</Button>
 			</CardActions>
 		</Card>
 	);

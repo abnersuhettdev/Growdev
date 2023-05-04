@@ -1,28 +1,62 @@
-import { Grid } from '@mui/material';
-import React from 'react';
+import { Add } from '@mui/icons-material';
+import { Fab, Grid } from '@mui/material';
+import React, { useState } from 'react';
 
-import { AppBar2 } from '../../components/AppBar2';
-import { ButtonStyled } from '../../components/ButtonStyled';
-import { Container2 } from '../../components/Container2';
+import ResponsiveAppBar from '../../components/Appbar';
+import { MyCard } from '../../components/Card';
+import { MyModal } from '../../components/Modal';
+import { IContato } from '../../types';
+
+const dataMock: IContato[] = [
+	{
+		nome: 'João',
+		email: 'joao@teste.com',
+		favorito: false,
+		telefone: '24 993129149',
+		criadoEm: new Date().toLocaleString('pt-Br', { dateStyle: 'long' }),
+	},
+	{
+		nome: 'Abner',
+		email: 'Abner@teste.com',
+		favorito: true,
+		telefone: '24 993129149',
+		criadoEm: new Date().toLocaleString('pt-Br'),
+	},
+];
 
 const Home: React.FC = () => {
+	const [listaContato, setListaContatos] = useState<IContato[]>(dataMock);
+	const [open, setOpen] = useState(false);
+
 	return (
 		<>
-			<AppBar2></AppBar2>
-			<Container2 />
-			<Grid
-				sx={{
-					display: 'flex',
-					bgcolor: 'lightblue',
-				}}
-				width={'100vw'}
-				gap={1}
-				paddingLeft={1}
-				paddingRight={1}
-			>
-				<ButtonStyled text="Cadastrar"></ButtonStyled>
-				<ButtonStyled text="Login"></ButtonStyled>
+			<ResponsiveAppBar />
+			<Grid container spacing={2} marginY={2}>
+				{listaContato.map((item) => (
+					<Grid key={item.email} item xs={12} sm={6} md={4}>
+						<MyCard
+							setListaContatos={setListaContatos}
+							contato={item}
+						/>
+					</Grid>
+				))}
 			</Grid>
+
+			<Fab
+				color="primary"
+				aria-label="add"
+				sx={{ position: 'fixed', right: '30px', bottom: '30px' }}
+				onClick={() => setOpen(true)}
+			>
+				<Add />
+			</Fab>
+
+			<MyModal
+				funcaoModificadora={setListaContatos}
+				aberto={open}
+				contexto="create"
+				fecharModal={() => setOpen(false)}
+			/>
 		</>
 	);
 };

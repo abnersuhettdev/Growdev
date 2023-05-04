@@ -49,7 +49,7 @@ const ResponsiveAppBar: React.FC = () => {
 	};
 
 	return (
-		<AppBar position="static">
+		<AppBar position="static" color="primary">
 			<Container maxWidth="xl" component={'header'}>
 				<Toolbar disableGutters>
 					<AdbIcon

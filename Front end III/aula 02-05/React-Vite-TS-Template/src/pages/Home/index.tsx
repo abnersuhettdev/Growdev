@@ -31,22 +31,25 @@ const Home: React.FC = () => {
 
 	return (
 		<>
-			<Grid container spacing={4} sx={{}} justifyContent={'center'}>
-				<Grid item>
+			<Grid
+				container
+				spacing={4}
+				sx={{ paddingTop: 4 }}
+				justifyContent={'center'}
+			>
+				<Grid item sx={{ display: 'flex' }} gap={1}>
 					<TextField
 						onChange={(e) => setTitulo(e.target.value)}
 						placeholder="Titulo"
 						value={titulo}
 					/>
-				</Grid>
-				<Grid item>
+
 					<TextField
 						onChange={(e) => setConteudo(e.target.value)}
 						placeholder="Conteúdo"
 						value={conteudo}
 					/>
-				</Grid>
-				<Grid item>
+
 					<TextField
 						onChange={(e) => setNotas(e.target.value)}
 						placeholder="Notas"
@@ -63,6 +66,7 @@ const Home: React.FC = () => {
 					<Button
 						onClick={() => handleAdd({ titulo, conteudo, notas })}
 						variant="contained"
+						sx={{ padding: 2 }}
 					>
 						Registrar
 					</Button>
