@@ -16,10 +16,17 @@ const dataMock: IContato[] = [
 		criadoEm: new Date().toLocaleString('pt-Br', { dateStyle: 'long' }),
 	},
 	{
-		nome: 'Abner',
-		email: 'Abner@teste.com',
+		nome: 'Pedro',
+		email: 'pedro@teste.com',
 		favorito: true,
-		telefone: '24 993129149',
+		telefone: '24 99993180',
+		criadoEm: new Date().toLocaleString('pt-Br'),
+	},
+	{
+		nome: 'Gabriel',
+		email: 'gabriel@teste.com',
+		favorito: true,
+		telefone: '24 91536585',
 		criadoEm: new Date().toLocaleString('pt-Br'),
 	},
 ];
@@ -33,7 +40,7 @@ const Home: React.FC = () => {
 			<ResponsiveAppBar />
 			<Grid marginX={2} container spacing={2} marginY={2}>
 				{listaContato.map((item) => (
-					<Grid key={item.email} item xs={12} sm={6} md={4}>
+					<Grid key={item.email} item xs={10} sm={6} md={3}>
 						<MyCard
 							setListaContatos={setListaContatos}
 							contato={item}

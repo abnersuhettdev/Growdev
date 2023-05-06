@@ -70,7 +70,7 @@ const ResponsiveAppBar: React.FC = () => {
 							textDecoration: 'none',
 						}}
 					>
-						LOGO
+						Meus Contatos
 					</Typography>
 
 					<Box
@@ -138,7 +138,7 @@ const ResponsiveAppBar: React.FC = () => {
 							textDecoration: 'none',
 						}}
 					>
-						ContactSaver
+						Meus Contatos
 					</Typography>
 					<Box
 						sx={{
