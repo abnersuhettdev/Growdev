@@ -1,10 +1,14 @@
 import { Add } from '@mui/icons-material';
 import { Fab, Grid } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ResponsiveAppBar from '../../components/Appbar';
 import { MyCard } from '../../components/Card';
 import { MyModal } from '../../components/Modal';
+import { useAppSelector } from '../../store/hooks';
+import { selectAllContacts } from '../../store/modules/Contacts/contatosSlice';
+import { selectUser } from '../../store/modules/User/userSlice';
 import { IContato } from '../../types';
 
 const dataMock: IContato[] = [
@@ -31,9 +35,18 @@ const dataMock: IContato[] = [
 	},
 ];
 
-const Home: React.FC = () => {
+const Contacts: React.FC = () => {
 	const [listaContato, setListaContatos] = useState<IContato[]>(dataMock);
 	const [open, setOpen] = useState(false);
+
+	const user = useAppSelector(selectUser);
+	const contatos = useAppSelector(selectAllContacts);
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (!user.isLogged) {
+			navigate('/');
+		}
+	}, [navigate, user]);
 
 	return (
 		<>
@@ -68,4 +81,4 @@ const Home: React.FC = () => {
 	);
 };
 
-export default Home;
+export default Contacts;

@@ -16,21 +16,22 @@ import {
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { removeUser, selectUser } from '../../store/modules/User/userSlice';
+
 const pages = [
 	{ label: 'Products', url: '/products' },
 	{ label: 'Pricing', url: '/pricing' },
 	{ label: 'Blog', url: '/blog' },
 ];
-const settings = [
-	{ label: 'Profile', url: '/profile' },
-	{ label: 'Account', url: '/account' },
-	{ label: 'Dashboard', url: '/dashboard' },
-	{ label: 'Logout', url: '/logout' },
-];
+const settings = [{ label: 'Logout', url: '/' }];
 
 const ResponsiveAppBar: React.FC = () => {
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 	const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+	const user = useAppSelector(selectUser);
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -164,7 +165,7 @@ const ResponsiveAppBar: React.FC = () => {
 								sx={{ p: 0 }}
 							>
 								<Avatar
-									alt="Remy Sharp"
+									alt={user.email}
 									src="/static/images/avatar/2.jpg"
 								/>
 							</IconButton>
@@ -188,7 +189,11 @@ const ResponsiveAppBar: React.FC = () => {
 							{settings.map((setting) => (
 								<MenuItem
 									key={setting.label}
-									onClick={handleCloseUserMenu}
+									onClick={() => {
+										handleCloseUserMenu;
+										dispatch(removeUser());
+										navigate(setting.url);
+									}}
 								>
 									<Typography textAlign="center">
 										{setting.label}
