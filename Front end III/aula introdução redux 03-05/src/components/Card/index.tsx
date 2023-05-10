@@ -9,40 +9,28 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 
+import { useAppDispatch } from '../../store/hooks';
+import { atualizar } from '../../store/modules/Contacts/contatosSlice';
 import { Contexto, IContato } from '../../types';
 import { MyModal } from '../Modal';
 
 interface MyCardProps {
 	contato: IContato;
-	setListaContatos: React.Dispatch<React.SetStateAction<IContato[]>>;
 }
 
-export const MyCard: React.FC<MyCardProps> = ({
-	contato,
-	setListaContatos,
-}) => {
+export const MyCard: React.FC<MyCardProps> = ({ contato }) => {
 	const [open, setOpen] = useState(false);
 	const [contexto, setContexto] = useState<Contexto>('create');
 
+	const dispatch = useAppDispatch();
+
 	const handleFavorite = () => {
-		setListaContatos((prev) => {
-			// const listaAntigaAux = [...prev];
-			// listaAntigaAux.forEach((item) => {
-			// 	if (item.email === contato.email) {
-			// 		item.favorito = !item.favorito;
-			// 	}
-			// });
-			// return listaAntigaAux;
-			return prev.map((item) => {
-				if (item.email === contato.email) {
-					return {
-						...item,
-						favorito: !item.favorito,
-					};
-				}
-				return item;
-			});
-		});
+		dispatch(
+			atualizar({
+				id: contato.email,
+				changes: { favorito: !contato.favorito },
+			}),
+		);
 	};
 
 	const handleClick = (context: Contexto) => {
@@ -92,7 +80,6 @@ export const MyCard: React.FC<MyCardProps> = ({
 				aberto={open}
 				contexto={contexto}
 				fecharModal={() => setOpen(false)}
-				funcaoModificadora={setListaContatos}
 				contato={contato}
 			/>
 		</>

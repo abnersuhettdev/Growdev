@@ -9,13 +9,18 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect, useState } from 'react';
 
-import { IContato } from '../../types';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import {
+	adicionar,
+	atualizar,
+	deletar,
+} from '../../store/modules/Contacts/contatosSlice';
+import { Contexto, IContato } from '../../types';
 
 interface IModalProps {
-	contexto: 'create' | 'update' | 'delete';
+	contexto: Contexto;
 	aberto: boolean;
 	fecharModal: () => void;
-	funcaoModificadora: React.Dispatch<React.SetStateAction<IContato[]>>;
 	contato?: IContato;
 }
 
@@ -23,12 +28,14 @@ export const MyModal: React.FC<IModalProps> = ({
 	aberto,
 	contexto,
 	fecharModal,
-	funcaoModificadora,
 	contato,
 }) => {
 	const [nome, setNome] = useState('');
 	const [telefone, setTelefone] = useState('');
 	const [email, setEmail] = useState('');
+
+	const user = useAppSelector((state) => state.user);
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		if (contexto === 'update' && contato) {
@@ -41,55 +48,49 @@ export const MyModal: React.FC<IModalProps> = ({
 	const handleSave = () => {
 		switch (contexto) {
 			case 'create':
-				const novoContato: IContato = {
-					nome,
-					telefone,
-					email,
-					favorito: false,
-					criadoEm: new Date().toLocaleDateString('pt-Br', {
-						dateStyle: 'long',
-					}),
-				};
-				funcaoModificadora((prev) => [...prev, novoContato]);
+				if (nome !== '' || email !== '' || telefone !== '') {
+					const novoContato: IContato = {
+						nome,
+						telefone,
+						email,
+						favorito: false,
+						criadoEm: new Date().toLocaleDateString('pt-Br', {
+							dateStyle: 'long',
+						}),
+						criadoPor: user.email,
+					};
+					dispatch(adicionar(novoContato));
+				}
 				break;
 
 			case 'delete':
-				funcaoModificadora((prev) => {
-					if (contato) {
-						return prev.filter(
-							(item) => item.email !== contato.email,
-						);
-					}
-
-					return prev;
-				});
-
+				if (contato) {
+					dispatch(deletar(contato.email));
+				}
 				break;
 
 			case 'update':
 				// atualiza um determinado item da lista
-				funcaoModificadora((prev) => {
-					return prev.map((item) => {
-						if (contato && contato.email === item.email) {
-							return {
-								...item,
+				if (contato) {
+					dispatch(
+						atualizar({
+							id: contato.email,
+							changes: {
 								nome,
 								telefone,
 								email,
-							};
-						}
-
-						return item;
-					});
-				});
+							},
+						}),
+					);
+				}
 				break;
 			default:
 		}
 
+		fecharModal();
 		setNome('');
 		setTelefone('');
 		setEmail('');
-		fecharModal();
 	};
 
 	return (

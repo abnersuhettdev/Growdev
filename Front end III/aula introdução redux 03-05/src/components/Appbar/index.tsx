@@ -165,7 +165,7 @@ const ResponsiveAppBar: React.FC = () => {
 								sx={{ p: 0 }}
 							>
 								<Avatar
-									alt={user.email}
+									alt={user.email.toUpperCase()}
 									src="/static/images/avatar/2.jpg"
 								/>
 							</IconButton>

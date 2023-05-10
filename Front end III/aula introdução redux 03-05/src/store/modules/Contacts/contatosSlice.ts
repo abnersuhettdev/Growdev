@@ -10,19 +10,19 @@ const adapterContato = createEntityAdapter<IContato>({
 export const {
 	selectAll: selectAllContacts,
 	selectById: selectContactByEmail,
-} = adapterContato.getSelectors();
+} = adapterContato.getSelectors((state: RootState) => state.contacts);
 
 export const contatosSlice = createSlice({
-	name: 'user',
+	name: 'contatos',
 	initialState: adapterContato.getInitialState(),
 	reducers: {
-		adcionar: adapterContato.addOne,
+		adicionar: adapterContato.addOne,
 		atualizar: adapterContato.updateOne,
 		deletar: adapterContato.removeOne,
 	},
 });
 
-export const { adcionar, atualizar, deletar } = contatosSlice.actions;
+export const { adicionar, atualizar, deletar } = contatosSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectContacts = (globalState: RootState) => globalState.user;
