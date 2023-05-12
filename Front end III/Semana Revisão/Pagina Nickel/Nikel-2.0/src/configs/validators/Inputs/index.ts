@@ -1,11 +1,23 @@
-export const emailValidator = (email: string) => {
-	if (!email.includes('@' || '.com')) {
-		throw new Error('Email Inválido');
+export const emailValidator = (email: string): boolean => {
+	if (!email) {
+		return false;
 	}
+
+	if (email.length > 50) {
+		return false;
+	}
+
+	return true;
 };
 
-export const passwordValidator = (password: string) => {
-	if (!password || password.length < 8) {
-		throw new Error('Senha Inválida');
+export const passwordValidator = (password: string): boolean => {
+	if (!password) {
+		return false;
 	}
+
+	if (password.length < 3) {
+		return false;
+	}
+
+	return true;
 };
