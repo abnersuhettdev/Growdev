@@ -1,13 +1,14 @@
 import { Container, Grid } from '@mui/material';
 
-import codaiLogo from '../../../public/assets/images/codai-logo.png';
-import growdevLogo from '../../../public/assets/images/growdev-logo.png';
-import nickelLogo from '../../../public/assets/images/nikel-logo.png';
-import pocket from '../../../public/assets/images/pocket.png';
-import { LoginForm } from './components/LoginForm';
+import { FormLogin } from './components/FormLogin';
 import { LoginImage } from './components/LoginImage';
 import LoginPhrases from './components/LoginPhrases';
 import { PhrasesProps } from './types/PhrasesProps';
+
+import codaiLogo from '/assets/images/codai-logo.png';
+import growdevLogo from '/assets/images/growdev-logo.png';
+import nikelLogo from '/assets/images/nikel-logo.png';
+import pocket from '/assets/images/pocket.png';
 
 export const Login = () => {
 	const phrases: PhrasesProps[] = [
@@ -37,18 +38,17 @@ export const Login = () => {
 				<Grid
 					xs={6}
 					item
-					gap={2}
 					sx={{
 						display: 'flex',
 						flexDirection: 'column',
+						alignItems: 'center',
 						justifyContent: 'center',
 						height: '100vh',
-						paddingTop: 3,
 					}}
+					gap={2}
 				>
-					<LoginImage src={nickelLogo} />
-
-					<LoginForm />
+					<LoginImage src={nikelLogo} margin="16px" />
+					<FormLogin />
 
 					<LoginImage src={codaiLogo} />
 					<LoginImage src={growdevLogo} />

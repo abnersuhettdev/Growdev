@@ -1,11 +1,20 @@
-import { Appbar } from '../../components/Appbar';
-import { Section } from '../../components/Section';
+import { Box } from '@mui/material';
 
-export const Transactions = () => {
+import MyAppBar from '../../shared-components/AppBar';
+import { Section } from '../../shared-components/Section';
+
+const Transactions = () => {
 	return (
 		<>
-			<Appbar page="transaction" />
-			<Section contexto="transactions" />
+			<MyAppBar context="transactions" />
+			<Box
+				component={'main'}
+				sx={{ width: '80%', marginY: 3, marginX: 'auto' }}
+			>
+				<Section context="transactions" />
+			</Box>
 		</>
 	);
 };
+
+export default Transactions;

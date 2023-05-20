@@ -1,3 +1,3 @@
 export interface PhrasesProps {
-  phrase: string
+	phrase: string;
 }
