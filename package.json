@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/uuid": "^9.0.1",
     "ts-node-dev": "^2.0.0"
   }
 }
