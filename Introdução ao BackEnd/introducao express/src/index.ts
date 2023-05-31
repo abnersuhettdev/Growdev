@@ -1,3 +1,4 @@
+import cors from "cors";
 import express, { Request, Response } from "express";
 import { v4 } from "uuid";
 import { transacoes, usuarios } from "./database";
@@ -5,7 +6,7 @@ import { Transacao, Usuario } from "./types";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(cors());
 app.listen(8080, () => console.log("Servidor iniciado"));
 
 app.get("/", (request: Request, response: Response) => {
