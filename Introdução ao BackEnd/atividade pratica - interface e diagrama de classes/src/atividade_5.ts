@@ -1,67 +1,73 @@
 interface Desconto {
-  aplicarDescontoEmPorcentagem(desconto: number): void{
-    throw 'Pegadinha do malandro!';
-  }
+	aplicarDescontoEmPorcentagem(desconto: number): void;
 
-  recuperarValorTotal(): number;
+	recuperarValorTotal(): number;
 }
 
 interface ValorPedido {
-  aplicarDescontoEmReais(desconto: number): void;
-  removeItem(item: string): void {
-    const index = this.itens.findIndex((i) => i.nome === item);
-    if (index > -1) {
-      this.itens.splice(index, 1);
-    }
-  }
+	aplicarDescontoEmReais(desconto: number): void;
+	removeItem(item: string): void;
 }
 
 class Pedido implements ValorPedido {
-  aplicarDescontoEmReais(desconto: number): void {
-    throw new Error("Method not implemented.");
-  }
-  removeItem(item: string): void {
-    throw new Error("Method not implemented.");
-  }
-  itens: ItemPedido[] = [];
+	aplicarDescontoEmReais(desconto: number): void {
+		throw new Error("Method not implemented.");
+	}
+	removeItem(item: string): void {
+		throw new Error("Method not implemented.");
+	}
 
-  add(item: ItemPedido): void {
-    this.itens.push(item);
-  }
+	itens: ItemPedido[] = [];
 
-  recuperarValorTotal(): number {
-    let total = this.itens
-      .map((i) => i.recuperarValorTotal())
-      .reduce((sum, v) => sum + v, 0);
+	valores = this.itens.map((item) => item.valor);
 
-    return total;
-  }
+	valor = this.valores.reduce((prev, curr) => prev + curr, 0);
 
-  aplicarDescontoEmPorcentagem(desconto: number): void {
-    const porcentagem = desconto / 100;
-    const descontoEmReais = this.valor * porcentagem;
-    this.valor -= descontoEmReais;
-  }
+	add(item: ItemPedido): void {
+		this.itens.push(item);
+	}
+
+	recuperarValorTotal(): number {
+		let total = this.itens
+			.map((i) => i.recuperarValorTotal())
+			.reduce((sum, v) => sum + v, 0);
+
+		return total;
+	}
+
+	aplicarDescontoEmPorcentagem(desconto: number): void {
+		const porcentagem = desconto / 100;
+		const descontoEmReais = this.valor * porcentagem;
+		this.valor -= descontoEmReais;
+	}
 }
 
-class ItemPedido extends ValorPedido, Desconto {
-  valor: number;
-  nome: string;
-  quantidade: number;
+class ItemPedido implements ValorPedido, Desconto {
+	valor: number;
+	nome: string;
+	quantidade: number;
 
-  constructor(valor: number, nome: string, quantidade: number) {
-    this.valor = valor;
-    this.nome = nome;
-    this.quantidade = quantidade;
-  }
+	constructor(valor: number, nome: string, quantidade: number) {
+		this.valor = valor;
+		this.nome = nome;
+		this.quantidade = quantidade;
+	}
 
-  recuperarValorTotal(): number {
-    return this.valor * this.quantidade;
-  }
+	removeItem(item: string): void {
+		throw new Error("Method not implemented.");
+	}
 
- 
+	recuperarValorTotal(): number {
+		return this.valor * this.quantidade;
+	}
 
-  aplicarDescontoEmReais(desconto: number): void {
-    this.valor -= desconto;
-  }
+	aplicarDescontoEmReais(desconto: number): void {
+		this.valor -= desconto;
+	}
+
+	aplicarDescontoEmPorcentagem(desconto: number): void {
+		const porcentagem = desconto / 100;
+		const descontoEmReais = this.valor * porcentagem;
+		this.valor -= descontoEmReais;
+	}
 }
