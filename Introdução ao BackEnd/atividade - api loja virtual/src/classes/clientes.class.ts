@@ -1,18 +1,18 @@
 import Usuario, { UsuarioDTO } from "./usuario.class";
 
-type ClienteDTO = UsuarioDTO & { endereco: Array<any> };
+type ClienteDTO = UsuarioDTO & { endereco?: Array<any> };
 
 class Cliente extends Usuario {
-	endereco: Array<any>;
+	endereco?: Array<any>;
 
 	constructor(dados: ClienteDTO) {
 		super({
 			cpf: dados.cpf,
 			email: dados.email,
 			id: dados.id,
-			nome: dados.nome,
+			nome_completo: dados.nome_completo,
 			senha: dados.senha,
-			tel: dados.tel,
+			telefone: dados.telefone,
 		});
 		this.endereco = dados.endereco;
 	}

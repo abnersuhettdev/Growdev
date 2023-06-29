@@ -1,7 +1,7 @@
 export type UsuarioDTO = {
 	id: string;
-	nome: string;
-	tel: string;
+	nome_completo: string;
+	telefone: string;
 	cpf: string;
 	email: string;
 	senha: string;
@@ -17,8 +17,8 @@ abstract class Usuario {
 
 	constructor(dados: UsuarioDTO) {
 		this.id = dados.id;
-		this.nome_completo = dados.nome;
-		this.telefone = dados.tel;
+		this.nome_completo = dados.nome_completo;
+		this.telefone = dados.telefone;
 		this.cpf = dados.cpf;
 		this.email = dados.email;
 		this.senha = dados.senha;
