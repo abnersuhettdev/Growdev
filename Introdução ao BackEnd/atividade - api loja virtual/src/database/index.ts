@@ -1,3 +1,3 @@
-import Cliente from "../classes/clientes.class";
+import { Cliente } from '../classes';
 
 export const clientes: Cliente[] = [];

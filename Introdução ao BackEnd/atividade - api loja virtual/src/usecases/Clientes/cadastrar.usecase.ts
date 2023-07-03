@@ -1,5 +1,5 @@
-import Cliente from "../../classes/clientes.class";
-import { ClientesRepository } from "../../repository/Clientes/repository";
+import { Cliente } from '../../classes';
+import { ClientesRepository } from '../../repository/Clientes';
 
 export type CadastrarClienteDTO = {
 	nome: string;
@@ -16,27 +16,27 @@ type RetornoCadastro = {
 };
 
 export class CadastrarCliente {
-	dados: CadastrarClienteDTO;
+	private dados: CadastrarClienteDTO;
 
 	constructor(dados: CadastrarClienteDTO) {
 		this.dados = dados;
 	}
 
 	public execute(): RetornoCadastro {
+		// REGRA DE NEGOCIO - não pode existir dois clientes com o mesmo CPF
 		const repository = new ClientesRepository();
 
-		if (repository.verificaCPFCadastrado(this.dados.cpf)) {
+		if (repository.existeCPFCadastrado(this.dados.cpf)) {
 			return {
 				sucesso: false,
-				mensagem: "Esse CPF ja está cadastrado",
+				mensagem: 'Este CPF já está cadastrado por outro Cliente.',
 			};
 		}
 
-		const novo = repository.adicionaNovoCliente(this.dados);
-
+		const novo = repository.adicionarNovo(this.dados);
 		return {
 			sucesso: true,
-			mensagem: "Cliente cadastrado com sucesso",
+			mensagem: 'Cliente cadastrado com sucesso',
 			dadoCadastrado: novo,
 		};
 	}

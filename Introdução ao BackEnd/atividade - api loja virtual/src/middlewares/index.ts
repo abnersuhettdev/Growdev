@@ -1,2 +1,2 @@
-export * from "./validarCpf";
-export * from "./validarDadosUsuario";
+export * from './validarCPF';
+export * from './validarDadosUsuario';

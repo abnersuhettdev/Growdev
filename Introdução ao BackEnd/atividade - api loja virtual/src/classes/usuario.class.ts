@@ -1,3 +1,5 @@
+// DTO - MODELO PARA GERAR UMA CLASSE
+// MODELO DOS DADOS QUE SERÃO UTILIZADOS NO CONSTRUCTOR
 export type UsuarioDTO = {
 	id: string;
 	nome_completo: string;
@@ -24,16 +26,17 @@ abstract class Usuario {
 		this.senha = dados.senha;
 	}
 
-	public toJSON() {
-		return {
+	public toJSON(): any {
+		const objUsuario = {
 			id: this.id,
-			nome_completo: this.nome_completo,
-			email: this.email,
-			senha: this.senha,
+			nome: this.nome_completo,
 			telefone: this.telefone,
 			cpf: this.cpf,
+			email: this.email,
+			senha: this.senha,
 		};
+
+		return objUsuario;
 	}
 }
-
 export default Usuario;

@@ -1,44 +1,44 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 
 export function validarDadosUsuario(
-	req: Request,
-	res: Response,
+	request: Request,
+	response: Response,
 	next: NextFunction
 ) {
-	const dados = req.body;
+	const dados = request.body;
 
 	if (!dados.nome_completo) {
-		return res.status(400).json({
+		return response.status(400).json({
 			sucesso: false,
-			message: "É obrigatório informar o nome completo do cliente",
+			motivo: 'É obrigatório informar o Nome Completo do cliente.',
 		});
 	}
 
 	if (!dados.telefone) {
-		return res.status(400).json({
+		return response.status(400).json({
 			sucesso: false,
-			message: "É obrigatório informar o telefone do cliente",
+			motivo: 'É obrigatório informar o Telefone do cliente.',
 		});
 	}
 
 	if (!dados.cpf) {
-		return res.status(400).json({
+		return response.status(400).json({
 			sucesso: false,
-			message: "É obrigatório informar o cpf do cliente",
+			motivo: 'É obrigatório informar o CPF do cliente.',
 		});
 	}
 
 	if (!dados.email) {
-		return res.status(400).json({
+		return response.status(400).json({
 			sucesso: false,
-			message: "É obrigatório informar o email do cliente",
+			motivo: 'É obrigatório informar o E-mail do cliente.',
 		});
 	}
 
 	if (!dados.senha) {
-		return res.status(400).json({
+		return response.status(400).json({
 			sucesso: false,
-			message: "É obrigatório informar a senha do cliente",
+			motivo: 'É obrigatório informar o Senha do cliente.',
 		});
 	}
 

@@ -1,33 +1,33 @@
-import Usuario, { UsuarioDTO } from "./usuario.class";
+import Usuario, { UsuarioDTO } from './usuario.class';
 
 type ClienteDTO = UsuarioDTO & { endereco?: Array<any> };
 
-class Cliente extends Usuario {
+export class Cliente extends Usuario {
 	endereco?: Array<any>;
 
 	constructor(dados: ClienteDTO) {
 		super({
-			cpf: dados.cpf,
-			email: dados.email,
 			id: dados.id,
 			nome_completo: dados.nome_completo,
-			senha: dados.senha,
 			telefone: dados.telefone,
+			cpf: dados.cpf,
+			email: dados.email,
+			senha: dados.senha,
 		});
 		this.endereco = dados.endereco;
 	}
 
 	public toJSON() {
-		return {
+		const objCliente = {
 			id: this.id,
 			nome_completo: this.nome_completo,
+			telefone: this.telefone,
 			email: this.email,
 			senha: this.senha,
-			telefone: this.telefone,
 			cpf: this.cpf,
 			endereco: this.endereco,
 		};
+
+		return objCliente;
 	}
 }
-
-export default Cliente;

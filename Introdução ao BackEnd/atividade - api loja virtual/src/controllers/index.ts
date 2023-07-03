@@ -1,1 +1,1 @@
-export * from "./cadastrarCliente";
+export * from './Clientes/clientes.controller';

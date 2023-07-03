@@ -1,2 +1,2 @@
-export * from "./clientes.class";
-export * from "./usuario.class";
+export * from './clientes.class';
+export * from './usuario.class';
