@@ -1,6 +1,11 @@
-import express from "express";
-import { ClientesController } from "./controllers";
-import { validarCPF, validarDadosUsuario } from "./middlewares";
+import express from 'express';
+import { ClientesController } from './controllers';
+import {
+	validarAtualizacaoCamposCliente,
+	validarCPF,
+	validarDadosUsuario,
+	validarIdCliente,
+} from './middlewares';
 
 const app = express();
 
@@ -12,32 +17,44 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.listen(8080, () => {
-	console.log("Servidor rodando na porta 8080");
+	console.log('Servidor rodando na porta 8080');
 });
 
 // AS DEFINIÇÕES DAS ROTAS
-app.get("/", (request, response) => {
-	return response.json("API LOJA VIRTUAL NO AR 🚀");
+app.get('/', (request, response) => {
+	return response.json('API LOJA VIRTUAL NO AR 🚀');
 });
 
 // ===============================================
 // CLIENTES
 const controllerClientes = new ClientesController();
+
 // POST - CADASTRAR CLIENTE
 app.post(
-	"/clientes",
+	'/clientes',
 	validarDadosUsuario,
 	validarCPF,
 	controllerClientes.cadastrar
 );
 
 // GET - LISTAR CLIENTES
-app.get("/listar", controllerClientes.listar);
+app.get('/clientes', controllerClientes.listar);
 
 // PUT - ATUALIZAR CLIENTES
-app.put("/clientes/:idCliente", controllerClientes.atualizar);
+app.put(
+	'/clientes/:idCliente',
+	validarIdCliente,
+	validarAtualizacaoCamposCliente,
+	controllerClientes.atualizar
+);
 
 // DELETE - EXCLUIR CLIENTES
+
+app.delete(
+	'/clientes/:idCliente',
+	validarIdCliente,
+	controllerClientes.deletar
+);
 
 // ===============================================
 // ENDEREÇOS

@@ -3,9 +3,9 @@ import { ClientesRepository } from '../../repository/Clientes';
 
 export type CadastrarClienteDTO = {
 	nome: string;
-	cpf: string;
 	telefone: string;
 	email: string;
+	cpf: string;
 	senha: string;
 };
 

@@ -1,44 +1,36 @@
-import { Cliente } from "../../classes/";
-import { ClientesRepository } from "../../repository/Clientes";
+import { ClientesRepository } from '../../repository/Clientes';
+
+export type ClienteSemSenha = {
+	id: string;
+	nome_completo: string;
+	cpf: string;
+	email: string;
+	telefone: string;
+};
 
 type RetornoListagem = {
 	sucesso: boolean;
 	mensagem: string;
-	clientes: Cliente[];
+	clientes: ClienteSemSenha[];
 };
 
-export class ListarCliente {
+export class ListarClientes {
 	public execute(): RetornoListagem {
+		// CAMADA DE CONEXÃO COM O BANCO OU ESQUEMA DE DADOS (RAM)
 		const repository = new ClientesRepository();
+		const listaClientesRetorno = repository.listarClientes();
 
-		const listaClientes = repository.listarClientes();
-
-		if (!listaClientes.length) {
+		if (!listaClientesRetorno.length) {
 			return {
-				sucesso: false,
-				mensagem: "Nenhum cliente cadastrado",
 				clientes: [],
+				mensagem: 'Nenhum cliente cadastrado ainda.',
+				sucesso: false,
 			};
 		}
-
 		return {
+			clientes: listaClientesRetorno,
+			mensagem: 'Clientes listados com sucessos',
 			sucesso: true,
-			mensagem: "clientes retornados com sucesso",
-			clientes: repository.listarClientes(),
-		};
-	}
-}
-
-export class ListarClientePeloID {
-	public execute(): RetornoListagem {
-		const repository = new ClientesRepository();
-
-		const listaClientes = repository.listarClientes();
-
-		return {
-			sucesso: true,
-			mensagem: "clientes retornados com sucesso",
-			clientes: repository.listarClientes(),
 		};
 	}
 }

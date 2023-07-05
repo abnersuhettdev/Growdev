@@ -1,7 +1,11 @@
 import { randomUUID } from "crypto";
 import { Cliente } from "../../classes";
 import { clientes } from "../../database";
-import { CadastrarClienteDTO } from "../../usecases/Clientes";
+import {
+	AtualizarClienteDTO,
+	CadastrarClienteDTO,
+	ClienteSemSenha,
+} from "../../usecases/Clientes";
 
 export class ClientesRepository {
 	public existeCPFCadastrado(cpf: string): boolean {
@@ -23,11 +27,24 @@ export class ClientesRepository {
 		return novoCliente;
 	}
 
-	public listarClientes(): Cliente[] {
-		return clientes.map((cliente) => {
-			const client = { ...cliente.toJSON(), senha: undefined };
+	public listarClientes(): ClienteSemSenha[] {
+		return clientes.map((valor) => valor.retornaClienteSemSenha());
+	}
 
-			return client;
-		});
+	public buscarClientePorID(idCliente: string): number {
+		return clientes.findIndex((cliente) => cliente.toJSON().id === idCliente);
+	}
+
+	public atualizarCliente(
+		posicao: number,
+		novosDados: Omit<AtualizarClienteDTO, "idCliente">
+	): ClienteSemSenha {
+		clientes[posicao].atualizarDados(novosDados);
+
+		return clientes[posicao].retornaClienteSemSenha();
+	}
+
+	public deletarCliente(posicao: number): Cliente {
+		return clientes.splice(posicao, 1)[0];
 	}
 }
