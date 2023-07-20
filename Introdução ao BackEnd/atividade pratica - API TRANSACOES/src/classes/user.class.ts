@@ -55,4 +55,14 @@ export class User {
 		this.#email = editedUser.email ?? this.#email;
 		this.#age = editedUser.age ?? this.#age;
 	}
+
+	deleteTransaction(id: string) {
+		const transactionIndex = this.#transactions.findIndex((t) => t.id == id);
+
+		if (transactionIndex === -1) {
+			throw new Error();
+		}
+
+		this.#transactions.splice(transactionIndex, 1);
+	}
 }

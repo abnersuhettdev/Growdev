@@ -1,4 +1,5 @@
 import express from "express";
+import { Transaction } from "./classes/transaction.class";
 import { User } from "./classes/user.class";
 
 const app = express();
@@ -83,6 +84,138 @@ app.delete("/users/:id", (req, res) => {
 
 	database.splice(indiceUsuario, 1);
 	return res.send(database.map((element) => element));
+});
+
+app.post("/user/:userId/transactions", (req, res) => {
+	const { userId } = req.params;
+	const { title, value, type } = req.body;
+
+	const foundUser = database.find((user) => user.toJson().id === userId);
+
+	if (!foundUser) {
+		return res.status(404).send({ message: "Usuário não encontrado" });
+	}
+
+	if (!title || !value || !type) {
+		return res
+			.status(400)
+			.send({ message: "Insira os dados da transação para cadastra-la" });
+	}
+
+	if (typeof value !== "number") {
+		return res.status(400).send({ message: "Insira um valor válido" });
+	}
+
+	if (type !== "income" && type !== "outcome") {
+		return res
+			.status(400)
+			.send({ message: "Insira um tipo de transação válida" });
+	}
+
+	const transaction = new Transaction(title, value, type);
+
+	foundUser.toJson().transactions.push(transaction);
+
+	return res.status(200).json({
+		message: "Transação criada com sucesso",
+	});
+});
+
+app.get("/user/:userId/transactions/:id", (req, res) => {
+	const { userId, id } = req.params;
+
+	const foundUser = database.find((user) => user.toJson().id === userId);
+
+	if (!foundUser) {
+		return res.status(404).send({ message: "Usuário não encontrado" });
+	}
+
+	const foundTransaction = foundUser
+		.toJson()
+		.transactions.find((t) => t.id == id);
+
+	if (!foundTransaction) {
+		return res.status(404).send({ message: "Transação não encontrada" });
+	}
+
+	return res.status(200).json({
+		message: "Transação encontrada com sucesso",
+		transação: foundTransaction,
+	});
+});
+
+app.get("/user/:userId/transactions", (req, res) => {
+	const { userId } = req.params;
+
+	const foundUser = database.find((user) => user.toJson().id === userId);
+
+	if (!foundUser) {
+		return res.status(404).send({ message: "Usuário não encontrado" });
+	}
+
+	return res.status(200).json({
+		message: "Transações encontrada com sucesso",
+		transacoes: foundUser.toJson().transactions,
+	});
+});
+
+app.put("/user/:userId/transactions/:id", (req, res) => {
+	const { userId, id } = req.params;
+	const { title, value, type } = req.body;
+
+	const foundUser = database.find((user) => user.toJson().id === userId);
+
+	if (!foundUser) {
+		return res.status(404).send({ message: "Usuário não encontrado" });
+	}
+
+	const foundTransaction = foundUser
+		.toJson()
+		.transactions.find((t) => t.id == id);
+
+	if (!foundTransaction) {
+		return res.status(404).send({ message: "Transação não encontrada" });
+	}
+
+	if (!title || !value || !type) {
+		return res
+			.status(400)
+			.send({ message: "Insira os dados da transação para cadastra-la" });
+	}
+
+	if (typeof value !== "number") {
+		return res.status(400).send({ message: "Insira um valor válido" });
+	}
+
+	if (type !== "income" && type !== "outcome") {
+		return res
+			.status(400)
+			.send({ message: "Insira um tipo de transação válida" });
+	}
+
+	foundTransaction.editTransaction({ title, type, value });
+
+	return res.status(200).json({
+		message: "Transação editada com sucesso",
+		transação: foundTransaction,
+	});
+});
+
+app.delete("/users/:userId/transactions/:id", (req, res) => {
+	const { userId, id } = req.params;
+
+	const foundUser = database.find((user) => user.toJson().id === userId);
+
+	if (!foundUser) {
+		return res.status(404).send({ message: "Usuário não encontrado" });
+	}
+
+	try {
+		foundUser.deleteTransaction(id);
+		return res.status(200).send({ message: "Transação deletada com sucesso" });
+	} catch (error) {
+		return res.status(404).send({ message: "Transação não encontrada" });
+	}
 });
 
 app.listen(3000, () => console.log("Servidor iniciado"));
