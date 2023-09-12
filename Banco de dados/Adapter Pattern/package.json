@@ -1,0 +1,19 @@
+{
+	"name": "y",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "tsc && node ./dist/adapter/main.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"typescript": "^5.2.2"
+	},
+	"dependencies": {
+		"@types/validator": "^13.11.1",
+		"validator": "^13.11.0"
+	}
+}
